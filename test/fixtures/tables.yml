@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  floorplan_id: 
+  name: MyString
+  length: 1
+  width: 1
+  top: 1
+  left: 1
+  rotation: 1
+  style: MyString
+  seats: 1
+
+two:
+  floorplan_id: 
+  name: MyString
+  length: 1
+  width: 1
+  top: 1
+  left: 1
+  rotation: 1
+  style: MyString
+  seats: 1

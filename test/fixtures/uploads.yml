@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  account_id: 
+  event_id: 
+  size: 1
+  s3_filename: MyString
+  original_filename: MyString
+  name: MyString
+  extension: MyString
+
+two:
+  account_id: 
+  event_id: 
+  size: 1
+  s3_filename: MyString
+  original_filename: MyString
+  name: MyString
+  extension: MyString

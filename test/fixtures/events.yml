@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  starting_date: 2014-07-14 13:49:39
+  account_id: 
+
+two:
+  name: MyString
+  starting_date: 2014-07-14 13:49:39
+  account_id: 
