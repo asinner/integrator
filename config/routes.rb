@@ -22,6 +22,8 @@ Integrator::Application.routes.draw do
     resources :timeline_items
   end
   
+  get 'sign-in' => 'users#sign_in', as: 'sign_in'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,47 @@
+<%= f.fields_for :users do |ff| %>
+
+	<div class='field first_name'>
+		<div class='label-container'>
+			<%= f.label :first_name, class: 'label' %>
+		</div>
+		<div class='text-input-container'>
+			<%= ff.text_field :first_name, placeholder: 'First name', class: 'text-input' %>			
+		</div>
+		<div class='clear'></div>
+		<span class='error-placeholder'></span>
+	</div>
+	
+	<div class='field last_name'>
+		<div class='label-container'>
+			<%= f.label :last_name, class: 'label' %>
+		</div>
+		<div class='text-input-container'>
+			<%= ff.text_field :last_name, placeholder: 'Last name', class: 'text-input' %>			
+		</div>
+		<div class='clear'></div>
+		<span class='error-placeholder'></span>
+	</div>
+	
+	<div class='field email'>
+		<div class='label-container'>
+			<%= f.label :email, class: 'label' %>
+		</div>
+		<div class='text-input-container'>
+			<%= ff.email_field :email, placeholder: 'Email', class: 'text-input' %>			
+		</div>
+		<div class='clear'></div>
+		<span class='error-placeholder'></span>
+	</div>
+	
+	<div class='field password'>
+		<div class='label-container'>
+			<%= f.label :password, class: 'label' %>
+		</div>
+		<div class='text-input-container'>
+			<%= ff.password_field :password, placeholder: 'Password', class: 'text-input' %>			
+		</div>
+		<div class='clear'></div>
+		<span class='error-placeholder'></span>
+	</div>
+
+<% end %>

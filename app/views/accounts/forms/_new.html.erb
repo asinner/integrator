@@ -1,0 +1,7 @@
+<%= form_for @account, url: accounts_path, remote: true, authenticity_token: true do |f| %>
+
+	<%= render 'users/forms/fields/new', f: f %>
+	
+	<%= f.submit 'Create account' %>
+	
+<% end %>

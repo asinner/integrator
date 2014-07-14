@@ -1,0 +1,23 @@
+var form = $('#new_account');
+
+<% if @account.persisted? %>
+
+	var view = $("<%= j render partial: 'accounts/welcome' %>");
+	var target = $('body');
+	target.empty().html(view);
+	
+<% else %>
+
+	// Loop through the users errors
+	<% if @user.errors.any? %>
+		<% @user.errors.each do |input, msg| %>
+			// Find the field div containing the input
+			var field = form.find("<%= ".field.#{input}" %>");
+			// Give the field an error class
+			field.addClass('error');
+			// Put the error message into the placeholder
+			field.find('.error-placeholder').html("<%= msg %>");
+		<% end %>
+	<% end %>
+
+<% end %>
