@@ -6,4 +6,6 @@ class Event < ActiveRecord::Base
   has_many :timelines, dependent: :destroy
   has_many :uploads, dependent: :destroy
   has_many :notes, as: :notable, dependent: :destroy
+  
+  validates :name, presence: true, length: { maximum: 255 }
 end

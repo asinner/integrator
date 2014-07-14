@@ -8,9 +8,13 @@
 </head>
 <body>
 
+<%= render 'shared/navigation' %>
+
 <%= render 'shared/flash' %>
 
-<%= yield %>
+<div id='page'>
+	<%= yield %>
+</div>
 
 </body>
 </html>

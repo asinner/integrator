@@ -1,0 +1,21 @@
+var form = $('#new_event');
+
+<% if @event.persisted? %>
+	
+	
+	
+<% else %>
+
+	// Loop through the users errors
+	<% if @event.errors.any? %>
+		<% @event.errors.each do |input, msg| %>
+			// Find the field div containing the input
+			var field = form.find("<%= ".field.#{input}" %>");
+			// Give the field an error class
+			field.addClass('error');
+			// Put the error message into the placeholder
+			field.find('.error-placeholder').html("<%= msg %>");
+		<% end %>
+	<% end %>
+
+<% end %>

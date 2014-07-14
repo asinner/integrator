@@ -1,0 +1,16 @@
+<%= link_to 'New event', new_event_path %>
+
+<% if @events.exists? %>
+	
+	<% @events.each do |event| %>
+	
+		<%= render 'events/single', event: event %>
+	
+	<% end %>
+	
+<% else %>
+
+	<span class='no-results'>No events here</span>
+
+<% end %>
+	  
