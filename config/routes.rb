@@ -2,6 +2,8 @@ Integrator::Application.routes.draw do
   
   root 'accounts#new'
   
+  resources :user_sessions
+  
   resources :accounts do
     resources :users, :events
   end

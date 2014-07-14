@@ -1,9 +1,9 @@
 class Event < ActiveRecord::Base
   belongs_to :account
-  has_many :vendors
-  has_many :floorplans
-  has_many :locations
-  has_many :timelines
-  has_many :uploads
-  has_many :notes, as: :notable
+  has_many :vendors, dependent: :destroy
+  has_many :floorplans, dependent: :destroy
+  has_many :locations, dependent: :destroy
+  has_many :timelines, dependent: :destroy
+  has_many :uploads, dependent: :destroy
+  has_many :notes, as: :notable, dependent: :destroy
 end
