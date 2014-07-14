@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
+  # Include Pundit for simple authorization
+  include Pundit
+  
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
+  # Declare current user as a helper method
   helper_method :current_user
 
   def current_user

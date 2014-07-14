@@ -9,6 +9,9 @@ Integrator::Application.routes.draw do
   end
   
   resources :events do 
+    member do
+      get 'overview'
+    end
     resources :floorplans, :timelines, :uploads, :vendors
   end
   

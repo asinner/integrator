@@ -1,0 +1,18 @@
+<%= form_for @event, url: events_path, authenticity_token: true, remote: true do |f| %>
+	
+	<div class='form-wrap'>
+		<div class='field name'>
+			<div class='label-container'>
+				<%= f.label :name, class: 'label' %>
+			</div>
+			<div class='text-input-containe'>
+				<%= f.text_field :name, class: 'text-input' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+		
+		<%= f.submit 'Create event', class: 'submit' %>
+	</div>
+	
+<% end %>

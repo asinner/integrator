@@ -1,11 +1,24 @@
+function setPreModalUrl(url) {
+	$('html').attr('data-pre-modal', url);
+} 
+function preModalPushState() {
+	var href = $('html').data('pre-modal');
+	if (history && history.pushState && href) {
+		history.pushState(null, document.title, href);
+		removePreModalPushStateUrl();
+	}
+	function removePreModalPushStateUrl() {
+		$('html').removeAttr('data-pre-modal');
+	}
+}
 var push_state_ready = function() {
 
 	// Anytime a link is clicked that will display in modal
 	// set the href to return to
-	//$('body').on('click', '.modal-link', function() {
-	//	var preModalUrl = window.location.href
-	//	setPreModalUrl(preModalUrl);
-	//});
+	$('body').on('click', '.modal-link', function() {
+		var preModalUrl = window.location.href
+		setPreModalUrl(preModalUrl);
+	});
 		
 	// Check support for push state
 	if (history && history.pushState) {
