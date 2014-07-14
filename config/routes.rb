@@ -1,4 +1,27 @@
 Integrator::Application.routes.draw do
+  
+  root 'accounts#new'
+  
+  resources :accounts do
+    resources :users, :events
+  end
+  
+  resources :events do 
+    resources :floorplans, :timelines, :uploads, :vendors
+  end
+  
+  resources :floorplans do
+    resources :tables
+  end
+  
+  resources :timelines do
+    resources :timeline_events
+  end
+  
+  resources :timeline_events do
+    resources :timeline_items
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
