@@ -1,0 +1,19 @@
+<h2>Timelines for <%= @event.name %></h2>
+
+<%= link_to 'New Timeline', new_event_timeline_path(@event) %>
+
+<div class='timelines'>
+	<% if @timelines.exists? %>
+	
+		<% @timelines.each do |timeline| %>
+		
+			<%= render 'timelines/single', timeline: timeline %>
+		
+		<% end %>
+	
+	<% else %>
+	  
+		<span class='no-results'>No timelines yet</span>
+	
+	<% end %>
+</div>

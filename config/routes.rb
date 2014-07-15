@@ -20,10 +20,6 @@ Integrator::Application.routes.draw do
   end
   
   resources :timelines do
-    resources :timeline_events
-  end
-  
-  resources :timeline_events do
     resources :timeline_items
   end
   

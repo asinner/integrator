@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TimelineEventTest < ActiveSupport::TestCase
+class TimelinesControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

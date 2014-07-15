@@ -8,4 +8,5 @@ class Event < ActiveRecord::Base
   has_many :notes, as: :notable, dependent: :destroy
   
   validates :name, presence: true, length: { maximum: 255 }
+  validates :starting_date, presence: true
 end

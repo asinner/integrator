@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  timeline_item_id: 
+  contact_id: 
+
+two:
+  timeline_item_id: 
+  contact_id: 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714213412) do
+ActiveRecord::Schema.define(version: 20140715074734) do
 
   create_table "accounts", force: true do |t|
     t.datetime "created_at"
@@ -98,7 +98,17 @@ ActiveRecord::Schema.define(version: 20140714213412) do
 
   add_index "tables", ["floorplan_id"], name: "index_tables_on_floorplan_id", using: :btree
 
-  create_table "timeline_events", force: true do |t|
+  create_table "timeline_item_contacts", force: true do |t|
+    t.integer  "timeline_item_id"
+    t.integer  "contact_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "timeline_item_contacts", ["contact_id"], name: "index_timeline_item_contacts_on_contact_id", using: :btree
+  add_index "timeline_item_contacts", ["timeline_item_id"], name: "index_timeline_item_contacts_on_timeline_item_id", using: :btree
+
+  create_table "timeline_items", force: true do |t|
     t.integer  "timeline_id"
     t.string   "description"
     t.datetime "start_time"
@@ -107,18 +117,7 @@ ActiveRecord::Schema.define(version: 20140714213412) do
     t.datetime "updated_at"
   end
 
-  add_index "timeline_events", ["timeline_id"], name: "index_timeline_events_on_timeline_id", using: :btree
-
-  create_table "timeline_items", force: true do |t|
-    t.integer  "timeline_event_id"
-    t.string   "description"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "timeline_items", ["timeline_event_id"], name: "index_timeline_items_on_timeline_event_id", using: :btree
+  add_index "timeline_items", ["timeline_id"], name: "index_timeline_items_on_timeline_id", using: :btree
 
   create_table "timelines", force: true do |t|
     t.string   "name"

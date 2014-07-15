@@ -1,0 +1,19 @@
+<%= link_to 'New timeline event', new_timeline_timeline_item_path(@timeline) %>
+
+<div class='timeline_items'>
+	
+	<% if @timeline_items.exists? %>
+	
+		<% @timeline_items.each do |timeline_item| %>
+		
+			<%= render 'timeline_items/single', timeline_item: timeline_item %>
+		
+		<% end %>
+	
+	<% else %>
+	  
+		<span class='no-results'>No timeline items yet</span>
+	
+	<% end %>
+	
+</div>

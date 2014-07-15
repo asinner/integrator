@@ -3,7 +3,7 @@
 	<div class='form-wrap'>
 		<div class='field name'>
 			<div class='label-container'>
-				<%= f.label :name, class: 'label' %>
+				<%= f.label :name, 'Event name', class: 'label' %>
 			</div>
 			<div class='text-input-containe'>
 				<%= f.text_field :name, class: 'text-input' %>
@@ -11,6 +11,18 @@
 			<div class='clear'></div>
 			<span class='error-placeholder'></span>
 		</div>
+		
+		<div class='field starting_date'>
+			<div class='label-container'>
+				<%= f.label :starting_date, 'Date', class: 'label' %>
+			</div>
+			<div class='text-input-containe'>
+				<%= f.text_field :starting_date, class: 'text-input date-input', value: Date.today.strftime("%Y/%m/%d") %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+		
 		
 		<%= f.submit 'Create event', class: 'submit' %>
 	</div>

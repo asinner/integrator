@@ -1,0 +1,52 @@
+
+<%= form_for @timeline_item, url: timeline_timeline_items_path(@timeline), authenticity_token: true, remote: true do |f| %>
+
+	<div class='form-wrap'>
+		
+		<div class='field description'>
+			<div class='label-container'>
+				<%= f.label :description, class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= f.text_field :description, class: 'text-input' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+		
+		<div class='field start_time'>
+			<div class='label-container'>
+				<%= f.label :start_time, class: 'label' %>
+			</div>
+			
+			<%= f.text_field :st_date, placeholder: 'Date', value: @event.starting_date.strftime("%Y/%m/%d"), class: 'text-input date-input' %>
+			<%= f.text_field :st_hour, value: '7' %>:
+			<%= f.text_field :st_min, value: '00' %>
+
+			<%= f.select :st_period, ['am', 'pm'], selected: 'pm' %>
+
+
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+		
+		<div class='field end_time'>
+			<div class='label-container'>
+				<%= f.label :end_time, class: 'label' %>
+			</div>
+			
+			<%= f.text_field :et_date, placeholder: 'Date', value: @event.starting_date.strftime("%Y/%m/%d"), class: 'text-input date-input' %>			
+			<%= f.text_field :et_hour, value: '7' %>:
+			<%= f.text_field :et_min, value: '30' %>
+			<%= f.select :et_period, ['am', 'pm'], selected: 'pm' %>
+			
+			
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>		
+		
+		<%= f.submit 'Add event to timeline'%>
+		
+	</div>
+	
+<% end %>
