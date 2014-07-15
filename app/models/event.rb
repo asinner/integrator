@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :account
+  has_many :contacts
   has_many :vendors, dependent: :destroy
   has_many :floorplans, dependent: :destroy
   has_many :locations, dependent: :destroy

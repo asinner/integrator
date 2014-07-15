@@ -1,5 +1,5 @@
 class TimelineItemsController < ApplicationController
-  
+    
   layout :resolve_layout
 
   def index
@@ -16,7 +16,10 @@ class TimelineItemsController < ApplicationController
   def new
     @timeline = Timeline.find(params[:timeline_id])
     @event = @timeline.event
+    authorize @event, :find
     @timeline_item = TimelineItem.new
+    @contacts = @event.contacts
+    
     respond_to do |format|
       format.html
       format.js

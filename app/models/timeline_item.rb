@@ -21,6 +21,8 @@ class TimelineItem < ActiveRecord::Base
   before_validation :change_time_components_to_integers
   before_save :assemble_times
   
+  accepts_nested_attributes_for :timeline_item_contacts
+  
   def change_time_components_to_integers
     # Changes the hour to int
     self.st_hour = self.st_hour.to_i

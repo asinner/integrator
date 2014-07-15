@@ -1,0 +1,60 @@
+<%= f.fields_for :contacts do |ff| %>
+
+	<div class='contact-form-wrap'>
+		<div class='field first_name'>
+			<div class='label-container'>
+				<%= ff.label :first_name, 'First name', class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= ff.text_field :first_name, placeholder: 'John', class: 'text-input' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+		
+		<div class='field last_name'>
+			<div class='label-container'>
+				<%= ff.label :last_name, 'Last name', class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= ff.text_field :last_name, placeholder: 'Doe', class: 'text-input' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+		
+		<div class='field position'>
+			<div class='label-container'>
+				<%= ff.label :position, class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= ff.text_field :position, placeholder: 'Owner', class: 'text-input' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+		
+		<div class='field email'>
+			<div class='label-container'>
+				<%= ff.label :email, class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= ff.text_field :email, placeholder: 'johndoe@example.com', class: 'text-input' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+	
+		<div class='field phone_number'>
+			<div class='label-container'>
+				<%= ff.label :phone_number, class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= ff.text_field :phone_number, placeholder: '(555) 123-4567', class: 'text-input' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+	</div>
+
+<% end %>

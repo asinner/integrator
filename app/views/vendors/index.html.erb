@@ -1,0 +1,19 @@
+<%= link_to 'New Vendor', new_event_vendor_path(@event) %>
+
+<div class='vendors'>
+	
+	<% if @vendors.exists? %>
+	
+		<% @vendors.each do |vendor| %>
+		
+			<%= render 'vendors/single', vendor: vendor %>
+		
+		<% end %>
+	
+	<% else %>
+	  
+		<span class='no-results'>No vendors here</span>
+	
+	<% end %>
+	
+</div>
