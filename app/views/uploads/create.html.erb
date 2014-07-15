@@ -1,0 +1,7 @@
+<% @messages.each do |message| %>
+	
+	<div class='upload-action <%= message[:type] %>'>
+		<%= message[:body] %>
+	</div>
+	
+<% end %>

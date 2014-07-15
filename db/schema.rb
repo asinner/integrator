@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715205843) do
+ActiveRecord::Schema.define(version: 20140715215436) do
 
   create_table "accounts", force: true do |t|
     t.datetime "created_at"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 20140715205843) do
     t.string   "extension"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "content_type"
   end
 
   add_index "uploads", ["account_id"], name: "index_uploads_on_account_id", using: :btree

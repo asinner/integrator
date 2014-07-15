@@ -1,0 +1,13 @@
+<div class='form-wrap'>
+	
+	<%= form_for @upload, url: event_uploads_path(@event), multipart: true, html: { target: 'upload-submission' } do |f| %>
+
+		<%= f.file_field :file, multiple: true %>
+
+		<%= f.submit "Upload" %>
+
+	<% end %>
+
+	<iframe name='upload-submission'/>
+	
+</div>

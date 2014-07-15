@@ -1,0 +1,19 @@
+<%= link_to 'New Upload', new_event_upload_path(@event) %>
+
+<div class='uploads'>
+	
+	<% if @uploads.exists? %>
+
+		<% @uploads.each do |upload| %>
+		
+			<%= render 'uploads/single', upload: upload %>
+		
+		<% end %>
+
+	<% else %>
+	  
+		<span class='no-results'>No uploads here</span>
+	
+	<% end %>
+	
+</div>

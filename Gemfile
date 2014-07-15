@@ -38,6 +38,9 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use pundit for authorization
 gem 'pundit'
 
+# Use AWS SDK for S3 and other services
+gem 'aws-sdk', '~> 1.0'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

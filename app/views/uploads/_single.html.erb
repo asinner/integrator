@@ -1,0 +1,5 @@
+<% upload = @upload if @upload %>
+
+<div class='upload' id='upload_<%= upload.id %>'>
+	<%= link_to upload.name, s3_url(Upload.s3_bucket, upload.s3_filename) %>
+</div>

@@ -2,10 +2,7 @@
 <%= @event.name %>
 </h1>
 
-<%= link_to 'Event page', event_path(@event) %>
-<%= link_to 'Timelines', event_timelines_path(@event) %>
-<%= link_to 'Vendors', event_vendors_path(@event) %>
-<%= link_to 'Files', event_uploads_path(@event) %>
+<%= render 'events/menu' %>
 
 <div id='dashboard'>
 	
