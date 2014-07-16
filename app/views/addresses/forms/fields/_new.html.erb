@@ -1,0 +1,58 @@
+<%= f.fields_for :address do |ff| %>
+
+	<div class='field line1'>
+		<div class='label-container'>
+			<%= ff.label :line1, class: 'label'%>
+		</div>
+		<div class='text-input-container'>
+			<%= ff.text_field :line1, class: 'text-input-container' %>
+		</div>
+		<div class='clear'></div>
+		<span class='error-placeholder'></span>
+	</div>
+	
+	<div class='field line2'>
+		<div class='label-container'>
+			<%= ff.label :line2, class: 'label'%>
+		</div>
+		<div class='text-input-container'>
+			<%= ff.text_field :line2, class: 'text-input-container' %>
+		</div>
+		<div class='clear'></div>
+		<span class='error-placeholder'></span>
+	</div>
+	
+	<div class='field city'>
+		<div class='label-container'>
+			<%= ff.label :city, class: 'label'%>
+		</div>
+		<div class='text-input-container'>
+			<%= ff.text_field :city, class: 'text-input-container' %>
+		</div>
+		<div class='clear'></div>
+		<span class='error-placeholder'></span>
+	</div>
+	
+	<div class='field state'>
+		<div class='label-container'>
+			<%= ff.label :state, class: 'label'%>
+		</div>
+		<div class='text-input-container'>
+			<%= ff.select :state, options_for_select(state_names_and_abbreviations) %>
+		</div>
+		<div class='clear'></div>
+		<span class='error-placeholder'></span>
+	</div>
+	
+	<div class='field zip'>
+		<div class='label-container'>
+			<%= ff.label :zip, class: 'label'%>
+		</div>
+		<div class='text-input-container'>
+			<%= ff.text_field :zip, class: 'text-input-container' %>
+		</div>
+		<div class='clear'></div>
+		<span class='error-placeholder'></span>
+	</div>
+
+<% end %>

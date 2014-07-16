@@ -1,0 +1,19 @@
+<%= link_to 'New location', new_event_location_path(@event) %>
+
+<div class='locations'>
+	
+	<% if @locations.exists? %>
+	
+		<% @locations.each do |location| %>
+		
+			<%= render 'locations/single', location: location %>
+		
+		<% end %>
+	
+	<% else %>
+	  
+		<span class='no-results'>No locations here</span>
+	
+	<% end %>
+	
+</div>

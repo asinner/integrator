@@ -2,3 +2,68 @@
 	Event: <%= @event.name %>
 </h1>
 
+<div id='locations'>
+	
+	<% if @locations.exists? %>
+	
+		<% @locations.each do |location| %>
+		
+			<%= render 'locations/single', location: location %>
+		
+		<% end %>
+	
+	<% else %>
+	  
+		<span class='no-results'>No locations have been added to this event</span>
+	
+	<% end %>
+	
+</div>
+
+<div id='timelines'>
+	
+	<% if @timelines.exists? %>
+	
+		<% @timelines.each do |timeline| %>
+		
+			<% if timeline.timeline_items.exists? %>
+			
+				<% timeline.timeline_items.each do |timeline_item| %>
+					
+					<%= render 'timeline_items/single', timeline_item: timeline_item %>
+				
+				<% end %>
+				
+			<% else %>
+			  
+				<span class='no-results'>No events have been added to this timeline</span>
+			
+			<% end %>
+		
+		<% end %>
+	
+	<% else %>
+	  
+		<span class='no-results'>No timelines have been added to this event</span>
+	
+	<% end %>
+	
+</div>
+
+<div id='uploads'>
+	
+	<% if @uploads.exists? %>
+	
+		<% @uploads.each do |upload| %>
+		
+			<%= render 'uploads/single', upload: upload %>
+		
+		<% end %>
+	
+	<% else %>
+	  
+		<span class='no-results'>No files have been uploaded to this event</span>
+	
+	<% end %>
+	
+</div>

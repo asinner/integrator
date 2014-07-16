@@ -3,9 +3,11 @@ class EventsController < ApplicationController
   
   def show
     @event = Event.find(params[:id])
-    @files = @event.uploads
+    
     @timelines = @event.timelines
+    @uploads = @event.uploads
     @contacts = @event.contacts
+    @locations = @event.locations
     
     respond_to do |format|
       format.html
