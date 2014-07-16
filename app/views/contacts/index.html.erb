@@ -1,0 +1,19 @@
+<%= link_to 'New contact', new_event_contact_path(@event) %>
+
+<div class='contacts'>
+	
+	<% if @contacts.exists? %>
+	
+		<% @contacts.each do |contact| %>
+		
+			<%= render 'contacts/single', contact: contact %>
+		
+		<% end %>
+	
+	<% else %>
+	  
+		<span class='no-results'>No contacts here</span>
+	
+	<% end %>
+	
+</div>

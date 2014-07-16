@@ -12,7 +12,7 @@ Integrator::Application.routes.draw do
     member do
       get 'overview'
     end
-    resources :floorplans, :timelines, :uploads, :vendors
+    resources :floorplans, :timelines, :uploads, :vendors, :contacts
   end
   
   resources :floorplans do

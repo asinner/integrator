@@ -1,0 +1,64 @@
+<%= form_for @contact, url: event_contacts_path(@event), authenticity_token: true, remote: true do |f| %>
+	
+	<div class='form-wrap'>
+	
+		<div class='field first_name'>
+			<div class='label-container'>
+				<%= f.label :first_name, class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= f.text_field :first_name, class: 'text-input' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+		
+		<div class='field last_name'>
+			<div class='label-container'>
+				<%= f.label :last_name, class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= f.text_field :last_name, class: 'text-input' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+		
+		<div class='field position'>
+			<div class='label-container'>
+				<%= f.label :position, class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= f.text_field :position, class: 'text-input' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+		
+		<div class='field email'>
+			<div class='label-container'>
+				<%= f.label :email, class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= f.text_field :email, class: 'text-input' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+		
+		<div class='field phone_number'>
+			<div class='label-container'>
+				<%= f.label :phone_number, class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= f.text_field :phone_number, class: 'text-input' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+		
+		<%= f.submit 'Add contact' %>
+	
+	</div>
+	
+<% end %>

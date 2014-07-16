@@ -1,5 +1,5 @@
 class UploadsController < ApplicationController
-  
+    
   layout :resolve_layout
   
   def index
@@ -22,6 +22,7 @@ class UploadsController < ApplicationController
   end
   
   def create
+    
     # An array that will contain messages pertaining to errors and successes
     @messages = []
     
@@ -40,6 +41,7 @@ class UploadsController < ApplicationController
         
         # Create a new object
         upload = @event.uploads.new
+        upload.account = current_user.account
         
         # Pass the AR object into an array
         @uploads << upload
@@ -47,22 +49,34 @@ class UploadsController < ApplicationController
         # Give the AR object attributes taken from the file
         upload.assign_attributes_from_file(file)
         
-        # If the AR object saves and the file gets uploaded to S3...
-        if upload.save && upload.to_s3(file)
-          
-          # ...then create a success message for that AR object
-          message = { type: 'success', body: "#{upload.original_filename} successfully uploaded" }
-          @messages << message
-          next
+        # Ensure that the users account has enough space to upload the file size
+        if current_user.account.has_enough_space? upload.size
+        
+          # If the AR object saves and the file gets uploaded to S3...
+          if upload.save && upload.to_s3(file)
+            
+            # ...then create a success message for that AR object
+            message = { type: 'success', body: "#{upload.original_filename} successfully uploaded" }
+            @messages << message
+            next
+            
+          else
+            
+            # ...otherwise there was an error
+            message = { type: 'error', body: "#{upload.original_filename} failed to upload. Error: #{upload.errors.full_messages.first}" }
+            @messages << message
+            next
+            
+          end
           
         else
-          
-          # ...otherwise there was an error
-          message = { type: 'error', body: "#{upload.original_filename} failed to upload. Error: #{upload.errors.full_messages.first}" }
+        
+          message = { type: 'error', body: "#{upload.original_filename} failed to upload. Not enough space on account." }
           @messages << message
           next
           
-        end
+        end  
+        
       end
       
     else
