@@ -1,13 +1,4 @@
-<%= form_tag user_sessions_path, id: 'login-form', authenticity_token: true do %>
-	
-	<span class='form-error'></span>
-	
-	<%= label_tag :email %>
-	<%= email_field_tag :email %>
-	
-	<%= label_tag :password %>
-	<%= password_field_tag :password %>
-	
-	<%= submit_tag "Sign in" %>
-	
-<% end %>
+<h1>Sign in</h1>
+<div class='form-container'>
+	<%= render 'users/forms/sign_in' %>
+</div>

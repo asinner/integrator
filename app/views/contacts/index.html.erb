@@ -1,19 +1,25 @@
-<%= link_to 'New contact', new_event_contact_path(@event) %>
+<div class='contacts loop'>
+	
+	<div class='header'>
+		<h2 class='heading'>Contacts</h2>
+		<%= link_to 'New contact', new_event_contact_path(@event), class: 'new-link' %>
+	</div>
+	
+	<div class='body'>
+		<% if @contacts.exists? %>
 
-<div class='contacts'>
-	
-	<% if @contacts.exists? %>
-	
-		<% @contacts.each do |contact| %>
-		
-			<%= render 'contacts/single', contact: contact %>
-		
-		<% end %>
-	
-	<% else %>
-	  
-		<span class='no-results'>No contacts here</span>
-	
-	<% end %>
+			<% @contacts.each do |contact| %>
+
+				<%= render 'contacts/single', contact: contact %>
+
+			<% end %>
+
+		<% else %>
+
+			<span class='no-results'>No contacts here</span>
+
+		<% end %>		
+	</div>
+
 	
 </div>

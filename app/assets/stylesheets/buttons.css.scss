@@ -1,0 +1,48 @@
+@import '_mixins';
+@import '_colors';
+@import '_fonts';
+
+.button {
+	@include border-radius(4px);
+	padding: 0 20px;
+}
+.button:hover {
+	cursor: pointer;
+}
+.button-h-40 {
+	font-family: $open-sans;
+	font-size: 14px;
+	font-weight: 600;
+	height: 40px;
+}
+.cancel-button {
+	background: transparent;
+	border: 1px solid rgb(200, 200, 200);
+	color: rgb(150, 150, 150);
+}
+.cancel-button:hover {
+	border: 1px solid rgb(150, 150, 150);
+	color: rgb(100, 100, 100);
+}
+.blue-button {
+	background: $main-blue;
+	border: 1px solid $main-blue-dark-accent;
+	color: #FFF;
+	@include blue-gradient;
+}
+.orange-button {
+	border: 1px solid #E68710;
+	color: #FFF;
+	text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.50);
+	@include orange-gradient;
+}
+.clear-button-orange {
+	width: 100%;
+	border: 1px solid $main-orange;
+	background: transparent;
+	color: $main-orange;
+}
+.clear-button-orange:hover {
+	background: $main-orange;
+	color: #FFF;
+}

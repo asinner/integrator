@@ -1,5 +1,5 @@
 <% timeline = @timeline if @timeline %>
 
-<div class='timeline' id='timeline_<%= timeline.id %>'>
-	<%= link_to timeline.name, timeline_timeline_items_path(timeline) %>
+<div class='timeline record' id='timeline_<%= timeline.id %>'>
+	<%= link_to timeline.name, timeline_timeline_items_path(timeline), class: 'link' %>
 </div>

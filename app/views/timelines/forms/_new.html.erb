@@ -2,18 +2,29 @@
 	
 	<div class='form-wrap'>
 		
-		<div class='field name'>
-			<div class='label-container'>
-				<%= f.label :name, class: 'label' %>
-			</div>
-			<div class='text-input-container'>
-				<%= f.text_field :name, class: 'text-input' %>
-			</div>
-			<div class='clear'></div>
-			<span class='error-placeholder'></span>
+		<div class='header'>
+			New timeline
+			<i class='close'>✖</i>
 		</div>
 		
-		<%= f.submit 'Add timeline' %>
+		
+		<div class='body'>
+			<div class='field name'>
+				<div class='label-container'>
+					<%= f.label :name, class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :name, class: 'text-input', placeholder: 'ex. Main timeline' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+		</div>
+		
+		<div class='footer'>
+			<%= f.submit 'Add timeline', class: 'submit button blue-button button-h-40' %>			
+			<%= f.button 'Cancel', type: 'button', class: 'button cancel-button button-h-40' %>
+		</div>
 		
 	</div>
 	

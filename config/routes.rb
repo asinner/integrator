@@ -24,6 +24,8 @@ Integrator::Application.routes.draw do
   end
   
   get 'sign-in' => 'users#sign_in', as: 'sign_in'
+  delete 'sign-out' => 'user_sessions#destroy', as: 'sign_out'
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

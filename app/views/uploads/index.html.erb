@@ -1,19 +1,24 @@
-<%= link_to 'New Upload', new_event_upload_path(@event) %>
-
-<div class='uploads'>
+<div class='uploads loop'>
 	
-	<% if @uploads.exists? %>
+	<div class='header'>
+		<h2 class='heading'>Files</h2>
+		<%= link_to 'Upload files »', new_event_upload_path(@event), class: 'new-link' %>
+	</div>
+	
+	<div class='body'>
+		<% if @uploads.exists? %>
 
-		<% @uploads.each do |upload| %>
-		
-			<%= render 'uploads/single', upload: upload %>
-		
+			<% @uploads.each do |upload| %>
+
+				<%= render 'uploads/single', upload: upload %>
+
+			<% end %>
+
+		<% else %>
+
+			<span class='no-results'>No uploads here</span>
+
 		<% end %>
-
-	<% else %>
-	  
-		<span class='no-results'>No uploads here</span>
-	
-	<% end %>
+	</div>
 	
 </div>

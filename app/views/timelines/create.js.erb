@@ -3,7 +3,7 @@ var form = $('#new_timeline');
 <% if @timeline.persisted? %>
 	
 	modalBackground();
-	newRecord("<%= j render partial: 'timelines/single' %>", '.timelines');
+	newRecord("<%= j render partial: 'timelines/single' %>", '.timelines .body');
 	
 <% else %>
 

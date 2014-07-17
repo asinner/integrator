@@ -1,7 +1,9 @@
 <%= form_for @account, url: accounts_path, remote: true, authenticity_token: true do |f| %>
 
-	<%= render 'users/forms/fields/new', f: f %>
-	
-	<%= f.submit 'Create account' %>
+	<div class='form-wrap' id='new-account-wrap'>
+		<%= render 'users/forms/fields/new', f: f %>
+		
+		<%= f.submit 'Create account', class: 'submit button button-h-40 orange-button' %>
+	</div>
 	
 <% end %>

@@ -1,5 +1,9 @@
 <% contact = @contact if @contact %>
 
-<div class='contact' id='contact_<%= contact.id %>'>
-	<%= contact.first_name %>
+<div class='contact record' id='contact_<%= contact.id %>'>
+	
+	<div class='information'>
+		<span class='name'> <%= "#{contact.fullname}" %><span class='name'><%= contact.vendor.name if contact.vendor %></span>
+		
+	</div>
 </div>

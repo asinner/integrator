@@ -1,13 +1,29 @@
-<div class='form-wrap'>
+<%= form_for @upload, url: event_uploads_path(@event), multipart: true, html: { target: 'upload-submission' } do |f| %>
+
+	<div class='upload-form-wrap form-wrap'>
+		
+		<div class='header'>
+			Select files to upload
+			<i class='close'>✖</i>
+		</div>
+		
+		<div class='body'>
+			
+			<%= f.button 'Choose files »', type: 'button', class: 'button clear-button-orange button-h-40 file-input-button' %>
+			
+			<%= f.file_field :file, multiple: true, class: 'hidden-file-input trigger-submission-change' %>
+			
+			<iframe name='upload-submission' id='iframe-upload'/>
+			
+		</div>
+  
+		<div class='footer'>
+
+			<%= f.button 'Cancel', type: 'button', class: 'button cancel-button button-h-40' %>
+
+		</div>
+		
+	</div>
 	
-	<%= form_for @upload, url: event_uploads_path(@event), multipart: true, html: { target: 'upload-submission' } do |f| %>
+<% end %>
 
-		<%= f.file_field :file, multiple: true %>
-
-		<%= f.submit "Upload" %>
-
-	<% end %>
-
-	<iframe name='upload-submission'/>
-	
-</div>

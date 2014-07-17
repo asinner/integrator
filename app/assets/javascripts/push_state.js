@@ -1,3 +1,7 @@
+function clearFlash() {
+	$('div.flash').remove();
+}
+
 function setPreModalUrl(url) {
 	$('html').attr('data-pre-modal', url);
 } 
@@ -26,6 +30,7 @@ var push_state_ready = function() {
 		// Get the script for the link and push the href into the history
 		// Note this will not fire on delete links
 		$('body').on('click', 'a:not([data-method="delete"])', function() {
+			clearFlash();
 			$.getScript(this.href);
 			history.pushState(null, document.title, this.href);
 			return false; // Prevents the link from making its normal request

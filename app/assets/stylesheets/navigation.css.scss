@@ -1,0 +1,26 @@
+@import '_colors';
+
+$navHeight: 50px;
+
+#top-navigation {
+	width: 100%;
+	height: $navHeight;
+	background: #FFF;
+	border-bottom: 2px solid rgb(200, 200, 200);
+}
+#top-navigation .menu {
+	float: right;
+}
+#top-navigation .menu li {
+	float: left;
+}
+#top-navigation .menu a {
+	font-size: 14px;
+	display: block;
+	padding: 0 15px;
+	line-height: $navHeight;
+	color: #9EC6F7;
+}
+#top-navigation .menu a:hover {
+	color: #FFF;
+}

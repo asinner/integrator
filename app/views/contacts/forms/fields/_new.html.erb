@@ -1,6 +1,11 @@
 <%= f.fields_for :contacts do |ff| %>
 
-	<div class='contact-form-wrap'>
+	<div class='fields-for-wrap'>
+		
+		<div class='header'>
+			Vendor contact
+		</div>
+		
 		<div class='field first_name'>
 			<div class='label-container'>
 				<%= ff.label :first_name, 'First name', class: 'label' %>
@@ -56,5 +61,6 @@
 			<span class='error-placeholder'></span>
 		</div>
 	</div>
+	
 
 <% end %>

@@ -3,7 +3,7 @@ var form = $('#new_event');
 <% if @event.persisted? %>
 	
 	modalBackground();
-	newRecord("<%= j render partial: 'events/single' %>", '.events');
+	newRecord("<%= j render partial: 'events/single' %>", '.events .body');
 	
 <% else %>
 

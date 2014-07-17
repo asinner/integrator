@@ -1,0 +1,17 @@
+@import '_mixins';
+
+.flash {
+	width: 90%;
+	margin: 0 auto 0;
+	@include border-radius(4px);
+	margin-top: 15px;
+}
+.flash.error {
+	border: 1px solid red;
+	background: #FCF0F0;
+	color: red;
+}
+.flash .msg {
+	display: block;
+	padding: 5px;
+}

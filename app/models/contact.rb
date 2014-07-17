@@ -5,4 +5,8 @@ class Contact < ActiveRecord::Base
   
   validates :first_name, presence: true, length: { maximum: 255 }
   validates :last_name, presence: true, length: { maximum: 255 }
+
+  def fullname
+    "#{self.first_name} #{self.last_name}"
+  end
 end

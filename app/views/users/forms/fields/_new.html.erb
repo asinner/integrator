@@ -1,5 +1,5 @@
 <%= f.fields_for :users do |ff| %>
-
+	
 	<div class='field first_name'>
 		<div class='label-container'>
 			<%= f.label :first_name, class: 'label' %>
@@ -38,7 +38,7 @@
 			<%= f.label :password, class: 'label' %>
 		</div>
 		<div class='text-input-container'>
-			<%= ff.password_field :password, placeholder: 'Password', class: 'text-input' %>			
+			<%= ff.password_field :password, placeholder: 'At least 5 characters', class: 'text-input' %>			
 		</div>
 		<div class='clear'></div>
 		<span class='error-placeholder'></span>

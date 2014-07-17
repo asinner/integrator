@@ -1,19 +1,24 @@
-<%= link_to 'New event', new_event_path %>
-
-<div class='events'>
+<div class='events loop'>
 	
-	<% if @events.exists? %>
-		
-		<% @events.each do |event| %>
-		
-			<%= render 'events/single', event: event %>
-		
-		<% end %>
-		
-	<% else %>
+	<div class='header'>
+		<h1 class='heading'>Your events</h1>
+		<%= link_to 'New event »', new_event_path, class: 'new-button' %>
+	</div>
 	
-		<span class='no-results'>No events here</span>
-	
-	<% end %>
+	<div class='body'>
+		<% if @events.exists? %>
+			
+			<% @events.each do |event| %>
+			
+				<%= render 'events/single', event: event %>
+			
+			<% end %>
+			
+		<% else %>
+		
+			<span class='no-results'>No events here. <%= link_to 'Create an event now', new_event_path, class: 'link' %></span>
+		
+		<% end %>		
+	</div>
 	
 </div>

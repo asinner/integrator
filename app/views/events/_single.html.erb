@@ -1,5 +1,6 @@
 <% event = @event if @event %>
 
-<div class='event' id="event_<%= event.id %>">
-	<%= link_to event.name, overview_event_path(event) %>
+<div class='event record' id="event_<%= event.id %>">
+	<%= link_to event.name, overview_event_path(event), class: 'link' %>
+	<i class='arrow'>›</i>
 </div>

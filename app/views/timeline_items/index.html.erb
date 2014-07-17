@@ -1,19 +1,25 @@
-<%= link_to 'New timeline event', new_timeline_timeline_item_path(@timeline) %>
+<div class='timeline_items loop'>
+	
+	<div class='header'>
+		<h2 class='heading'><%= @timeline.name %></h2>
+		<%= link_to 'Add timeline event »', new_timeline_timeline_item_path(@timeline), class: 'new-link' %>
+		
+	</div>
+	
+	<div class='body'>
+		<% if @timeline_items.exists? %>
 
-<div class='timeline_items'>
-	
-	<% if @timeline_items.exists? %>
-	
-		<% @timeline_items.each do |timeline_item| %>
-		
-			<%= render 'timeline_items/single', timeline_item: timeline_item %>
-		
+			<% @timeline_items.each do |timeline_item| %>
+
+				<%= render 'timeline_items/single', timeline_item: timeline_item %>
+
+			<% end %>
+
+		<% else %>
+
+			<span class='no-results'>No timeline items yet</span>
+
 		<% end %>
-	
-	<% else %>
-	  
-		<span class='no-results'>No timeline items yet</span>
-	
-	<% end %>
+	</div>
 	
 </div>

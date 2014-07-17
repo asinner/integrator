@@ -1,0 +1,25 @@
+<%= form_tag user_sessions_path, id: 'login-form', authenticity_token: true do %>
+	
+	<span class='form-error'></span>
+	
+	<div class='field'>
+		<div class='label-container'>
+			<%= label_tag :email, nil, class: 'label' %>
+		</div>
+		<div class='text-input-container'>
+			<%= email_field_tag :email, nil, placeholder: 'Email', class: 'text-input' %>
+		</div>
+	</div>
+	
+	<div class='field'>
+		<div class='label-container'>
+			<%= label_tag :password, nil, class: 'label' %>
+		</div>
+		<div class='text-input-container'>
+			<%= password_field_tag :password, nil, placeholder: 'Password', class: 'text-input'  %>
+		</div>
+	</div>
+	
+	<%= submit_tag "Sign in", class: 'submit button button-h-40 orange-button' %>
+	
+<% end %>

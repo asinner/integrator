@@ -1,5 +1,24 @@
 <% vendor = @vendor if @vendor %>
 
 <div class='vendor' id='vendor_<%= %>'>
-	<%= vendor.name %>
+	
+	<div class='name'>
+		<%= vendor.name %>
+	</div>
+	
+	<div class='category'>
+		<%= vendor.category %>
+	</div>
+	
+	
+	<% if vendor.contacts.exists? %>
+	
+		<% vendor.contacts.each do |contact| %>
+		
+			<%= render 'vendors/single_contact', contact: contact %>
+		
+		<% end %>
+	
+	<% end %>
+	
 </div>

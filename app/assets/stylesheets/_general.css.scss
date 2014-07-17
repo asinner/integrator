@@ -1,0 +1,29 @@
+@import '_fonts';
+
+html {
+	font-family: $open-sans;
+	font-weight: 400;
+	font-size: 16px;
+	background: #FFF;
+}
+
+html {
+	height: 100%;
+}
+body {
+	height: 100%;
+}
+#page {
+	height: 100%;
+	height: calc(100% - 50px);
+}
+
+.underline:hover {
+	text-decoration: underline;
+}
+.clear {
+	clear: both;
+}
+.hidden {
+	display: none;
+}

@@ -3,7 +3,7 @@ var form = $('#new_vendor');
 <% if @vendor.persisted? %>
 	
 	modalBackground();
-	newRecord("<%= j render partial: 'vendors/single' %>", '.vendors');
+	newRecord("<%= j render partial: 'vendors/single' %>", '.vendors .body');
 	
 <% else %>
 

@@ -6,7 +6,7 @@ class TimelineItemsController < ApplicationController
     @timeline = Timeline.find(params[:timeline_id])
     @event = @timeline.event
     authorize @event, :find
-    @timeline_items = @timeline.timeline_items
+    @timeline_items = @timeline.timeline_items.order(start_time: :asc)
     respond_to do |format|
       format.html
       format.js
