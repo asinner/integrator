@@ -1,4 +1,7 @@
 class LocationsController < ApplicationController
+  
+  layout :resolve_layout
+  
   def index
     @event = Event.find(params[:event_id])
     authorize @event, :find
@@ -32,6 +35,40 @@ class LocationsController < ApplicationController
         format.html
         format.js
       end
+    end
+  end
+  
+  def edit
+    @location = Location.find(params[:id])
+    @event = @location.event
+    authorize @event, :find
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  
+  def update
+    @location = Location.find(params[:id])
+    @event = @location.event
+    authorize @event, :find
+    respond_to do |format|
+      if @location.update_attributes(location_params)
+        format.html
+        format.js
+      else
+        format.html
+        format.js
+      end
+    end
+  end
+  
+  def resolve_layout
+    case action_name
+    when 'index'
+      'event_overview'
+    else
+      'application'
     end
   end
   

@@ -1,0 +1,48 @@
+<%= form_for @location, url: event_location_path(@event, @location), method: :patch, authenticity_token: true, remote: true do |f| %>
+	
+	<div class='form-wrap'>
+		
+		<div class='header'>
+			Edit location
+			<i class='close'>✖</i>
+		</div>
+		
+		<div class='body'>
+			<div class='field name'>
+				<div class='label-container'>
+					<%= f.label :name, 'Location name', class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :name, class: 'text-input', placeholder: "The Grand Hotel" %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+
+			<div class='field purpose'>
+				<div class='label-container'>
+					<%= f.label :purpose, 'Location purpose', class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :purpose, placeholder: 'ex. Ceremony or Reception', class: 'text-input'%>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+
+			<%= render 'addresses/forms/fields/new', f: f %>
+			
+		</div>
+		
+		<div class='footer'>
+			
+			<%= f.submit 'Update', class: 'submit button button-h-40 blue-button' %>
+			
+			<%= f.button 'Cancel', type: 'button', class: 'cancel-button button button-h-40' %>
+			
+		</div>
+
+		
+	</div>
+	
+<% end %>

@@ -1,0 +1,31 @@
+<%= form_for @upload, url: event_upload_path(@event, @upload), method: :patch, remote: true, authenticity_token: true do |f| %>
+
+	<div class='form-wrap'>
+		<div class='header'>
+			Edit file name
+			<i class='close'>✖</i>
+		</div>
+		
+		<div class='body'>
+			<div class='field name'>
+				<div class='label-container'>
+					<%= f.label :name, 'File name', class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :name, class: 'text-input' %>
+				</div>
+			</div>
+		</div>
+		
+		<div class='footer'>
+			
+			<%= f.submit 'Update', class: 'submit button button-h-40 blue-button'%>
+			
+			<%= f.button 'Cancel', type: 'button', class: 'button cancel-button button-h-40' %>
+			
+		</div>
+		
+	</div>
+		
+<% end %>
+

@@ -1,0 +1,31 @@
+<%= form_for @timeline, url: event_timeline_path(@event, @timeline), method: :patch, authenticity_token: true, remote: true do |f| %>
+	
+	<div class='form-wrap'>
+		
+		<div class='header'>
+			Edit timeline
+			<i class='close'>✖</i>
+		</div>
+		
+		
+		<div class='body'>
+			<div class='field name'>
+				<div class='label-container'>
+					<%= f.label :name, class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :name, class: 'text-input', placeholder: 'ex. Main timeline' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+		</div>
+		
+		<div class='footer'>
+			<%= f.submit 'Update', class: 'submit button blue-button button-h-40' %>			
+			<%= f.button 'Cancel', type: 'button', class: 'button cancel-button button-h-40' %>
+		</div>
+		
+	</div>
+	
+<% end %>

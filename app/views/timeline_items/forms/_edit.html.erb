@@ -1,0 +1,71 @@
+<%= form_for @timeline_item, url: timeline_timeline_item_path(@timeline, @timeline_item), method: :patch, authenticity_token: true, remote: true do |f| %>
+
+	<div class='form-wrap'>
+	
+		<div class='header'>
+			Edit timeline event
+			<i class='close'>✖</i>
+		</div>
+		
+		<div class='body'>
+			<div class='field description'>
+				<div class='label-container'>
+					<%= f.label :description, class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :description, class: 'text-input' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+
+			<div class='field start_time'>
+				<div class='label-container'>
+					<%= f.label :start_time, class: 'label' %>
+				</div>
+				<div class='hour-min-inputs-container'>
+					<%= f.text_field :st_hour, value: @timeline_item.start_time.strftime("%l"), class: 'text-input hour-min-input hour-input' %>
+					<i class='hour-min-separator'>:</i>
+					<%= f.text_field :st_min, value: @timeline_item.start_time.strftime("%M"), class: 'text-input hour-min-input min-input' %>
+					
+					<div class='select-cover'>
+						<span class='value'></span>
+						<%= f.select :st_period, options_for_select(['am', 'pm'], selected: @timeline_item.start_time.strftime("%P")), {}, class: 'meridiem-period-select hidden-select' %>
+						<i class='arrow'>▾</i>
+					</div>
+					
+					<%= f.text_field :st_date, placeholder: 'Date', value: @timeline_item.start_time.strftime("%Y/%m/%d"), class: 'text-input date-input' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+
+			<div class='field end_time'>
+				<div class='label-container'>
+					<%= f.label :end_time, class: 'label' %>
+				</div>
+				<div class='hour-min-inputs-container'>
+					<%= f.text_field :et_hour, value: @timeline_item.end_time.strftime("%l"), class: 'text-input hour-min-input hour-input' %>
+					<i class='hour-min-separator'>:</i>
+					<%= f.text_field :et_min, value: @timeline_item.end_time.strftime("%M"), class: 'text-input hour-min-input min-input' %>
+
+					<div class='select-cover'>
+						<span class='value'></span>
+						<%= f.select :et_period, options_for_select(['am', 'pm'], selected: @timeline_item.end_time.strftime("%P")), {}, class: 'meridiem-period-select hidden-select' %>
+						<i class='arrow'>▾</i>
+					</div>
+					
+					<%= f.text_field :et_date, placeholder: 'Date', value: @timeline_item.end_time.strftime("%Y/%m/%d"), class: 'text-input date-input' %>			
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+		</div>
+		
+		<div class='footer'>
+			<%= f.submit 'Update', class: 'submit button button-h-40 blue-button' %>
+			<%= f.button 'Cancel', type: 'button', class: 'button button-h-40 cancel-button' %>
+		</div>		
+	</div>
+	
+<% end %>

@@ -39,6 +39,31 @@ class VendorsController < ApplicationController
     end
   end
   
+  def edit
+    @vendor = Vendor.find(params[:id])
+    @event = @vendor.event
+    authorize @event, :find
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  
+  def update
+    @vendor = Vendor.find(params[:id])
+    @event = @vendor.event
+    authorize @event, :find
+    respond_to do |format|
+      if @vendor.update_attributes(vendor_params)
+        format.html
+        format.js
+      else
+        format.html
+        format.js
+      end
+    end
+  end
+  
   def vendor_params
     params.require(:vendor).permit(:name, :category, contacts_attributes: [:first_name, :last_name, :position, :email, :phone_number])
   end

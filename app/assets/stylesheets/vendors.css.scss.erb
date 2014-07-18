@@ -1,0 +1,78 @@
+@import '_colors';
+@import '_mixins';
+
+.vendors.loop .body {
+	padding: 25px;
+}
+
+/* Vendor */
+
+.vendor {
+	position: relative;
+	border-bottom: 2px solid rgb(200, 200, 200);
+	font-size: 14px;
+	@include border-radius(4px);
+	@include box-shadow(2px 2px 2px rgba(0, 0, 0, 0.10));
+	margin-bottom: 15px;
+}
+.vendor .header {
+	border: none;
+	background: $bs-blue !important;
+	border: 1px solid $bs-blue-dark !important;
+	@include border-top-radius(4px);
+	color: #FFF !important;
+	height: auto !important;
+	font-weight: 600 !important;
+}
+.vendor .header .name {
+	display: block;
+	padding-left: 20px;
+}
+.vendor .header .category {
+	display: block;
+	font-size: 12px;
+	font-weight: 400;
+	padding: 0 15px;
+	line-height: 20px;
+	position: relative;
+	top: -10px;
+	left: 5px;
+}
+.vendor .header .edit-link:hover {
+	background: url(<%= asset_path 'edit-icon-gray.png' %>) no-repeat, rgba(255, 255, 255, 0.20);
+}
+.vendor .body {
+	padding: 0 !important;
+	border: 1px solid rgb(230, 230, 230) !important;
+	border-top: none !important;
+}
+.vendor .body .add-link {
+	font-size: 12px;
+	display: block;
+	padding: 15px;
+	padding-left: 45px;
+	color: $bs-blue;
+}
+.vendor .body .add-link:hover {
+	color: $bs-blue-dark;
+}
+
+/* Contacts */
+
+#dashboard .vendor .contact .name {
+	font-weight: 600;
+	font-size: 14px;
+}
+#dashboard .vendor .contact .name .name {
+	display: none;
+}
+#dashboard .vendor .contact {
+	position: relative;
+	padding: 15px 0;
+	padding-left: 45px;
+	border-top: 1px solid rgb(240, 240, 240);
+	border-bottom: none;
+}
+#dashboard .vendor .contact .edit-link {
+	top: 12px;
+}

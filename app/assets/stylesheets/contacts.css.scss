@@ -1,3 +1,28 @@
-.contact {
-	
+@import '_colors';
+
+#dashboard .contact {
+	cursor: pointer;
+	font-size: 14px;
+	padding-left: 55px;
+	position: relative;
+	border-bottom: 1px solid rgb(240, 240, 240);
+}
+#dashboard .contact:last-child {
+	border: none;
+}
+#dashboard .contact .edit-link {
+	top: 0;
+}
+#dashboard .contact .name {
+	height: 30px;
+	line-height: 30px;
+	color: $bs-blue;
+}
+#dashboard .contact .name:hover {
+	color: $bs-blue-dark;
+}
+#dashboard .contact .info {
+	display: none;
+	color: rgb(150, 150, 150);
+	padding-bottom: 15px;
 }

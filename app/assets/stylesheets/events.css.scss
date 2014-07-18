@@ -5,6 +5,7 @@
 	position: relative;
 	padding-left: 200px;
 	width: auto;
+	overflow-y: scroll;
 	height: 100%;
 }
 #dashboard-container .menu {
@@ -14,25 +15,31 @@
 	left: 0;
 	width: 200px;
 	box-sizing: border-box;
-	border-right: 1px solid rgb(240, 240, 240);
+	border-right: 1px solid #000;
 	height: 100%;
+	overflow-y: scroll;
+	background: rgb(51, 51, 51);
+	@include box-shadow(inset -2px 0px 5px rgba(0, 0, 0, 0.50));
 }
 #dashboard-container .menu li {
 	position: relative;
-	border-bottom: 1px solid rgb(240, 240, 240);
+	border-bottom: 1px solid rgb(41, 41, 41);
+}
+#dashboard-container .menu li:hover {
+	background: rgb(61, 61, 61);
 }
 #dashboard-container .menu li:hover .arrow {
-	color: $main-blue-dark-accent;
+	color: #FFF;
 }
 #dashboard-container .menu li:hover a {
-	color: $main-blue-dark-accent;
+	color: #FFF;
 }
 #dashboard-container .menu a {
 	display: block;
 	height: 50px;
 	line-height: 50px;
 	padding-left: 25px;
-	color: rgb(150, 150, 150);
+	color: rgb(100, 100, 100);
 }
 #dashboard-container .menu .arrow {
 	font-size: 24px;
@@ -42,33 +49,39 @@
 	right: 25px;
 	height: 50px;
 	line-height: 50px;
-	color: rgb(230, 230, 230);
+	color: rgb(100, 100, 100);
 }
 #dashboard-container .header {
-	font-size: 20px;
+	font-size: 18px;
 	padding: 0 25px;
 	font-weight: 600;
 	height: 50px;
 	line-height: 50px;
 	font-weight: 300;
-	border-bottom: 1px solid rgb(230, 230, 230);
+	border-bottom: 1px solid #000;
+	color: #FFF;
+	background: rgb(51, 51, 51);
 }
-
+#dashboard {
+	height: calc(100% - 50px);
+	overflow-y: scroll;
+}
 #dashboard .loop {
+	margin: 0;
 	width: auto;
 	padding: 0;
 }
-#dashboard .loop .header .heading {
-	float: left;
-	font-weight: 600;
-	font-size: 14px;
+#dashboard .loop .header {
+	background: rgb(250, 250, 250);
+	border-bottom: 1px solid rgb(200, 200, 200);
+	color: rgb(51, 51, 51);
 }
 #dashboard .loop .new-link {
 	display: block;
 	float: left;
 	height: 30px;
 	line-height: 30px;
-	background: $main-blue;
+	background: $bs-blue;
 	@include border-radius(4px);
 	font-size: 13px;
 	padding: 0 25px;
@@ -79,7 +92,17 @@
 	top: 10px;
 	margin-left: 10px;
 }
+#dashboard .loop .new-link:hover {
+	background: $bs-blue-dark;
+}
+#dashboard .loop .header .heading {
+	float: left;
+	font-weight: 600;
+	font-size: 14px;
+}
 #dashboard .loop .body {
+	border-left: none;
+	border-right: none;
 	margin-top: 0;
 }
 #dashboard .loop .body .no-results {
@@ -94,11 +117,136 @@
 	border: none;
 	border-bottom: 1px solid rgb(230, 230, 230);
 }
+#dashboard .loop .record:last-child {
+	border-bottom: none;
+}
 #dashboard .loop .record .link {
 	display: block;
 	height: 50px;
 	line-height: 50px;
 	color: $main-blue;
-	padding-left: 25px;
 	font-size: 14px;
+}
+
+#event-page {
+	width: 800px;
+	margin: 0 auto 0;
+	@include border-radius(4px);
+	padding: 25px;
+}
+#event-page .share {
+	background: #FFFDF0;
+	padding: 25px 10px;
+	border: 1px dotted #E8E4C3;
+	font-size: 14px;
+}
+#event-page .share .header {
+	font-weight: 600;
+	color: #000;
+}
+#event-page .share .url {
+	padding: 5px 0;
+}
+#event-page .share .text-input {
+	height: 40px;
+	width: 100%;
+}
+#event-page .event-information {
+	margin-top: 10px;
+	padding: 10px;
+	color: #000;
+}
+#event-page .event-information .name {
+	font-size: 30px;
+	font-weight: 600;
+	letter-spacing: -1px;
+}
+#event-page .event-information .date {
+	font-size: 14px;
+	color: rgb(200, 200, 200);
+}
+#event-page .note {
+	border: 1px solid rgb(240, 240, 240);
+	color: rgb(51, 51, 51);
+	padding: 25px 15px;
+	@include border-radius(4px);
+	background: rgb(250, 250, 250);
+}
+#event-page .note .link {
+	color: $bs-blue;
+}
+#event-page .note .link:hover {
+	color: $bs-blue-dark;
+}
+#event-page .edit-link {
+	display: none;
+}
+#event-page .loop {
+	width: 100%;
+	padding: 0;
+	margin-top: 50px;
+}
+#event-page .locations.loop {
+	margin-top: 0px;
+}
+#event-page .loop .header {
+	height: 24px;
+	line-height: 24px;
+	padding: 10px;
+	font-weight: 600;
+	font-size: 16px;
+	border: none;
+	border-bottom: 1px solid rgb(240, 240, 240);
+	background: #FFF;
+	color: rgb(100, 100, 100);
+}
+#event-page .loop .body {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+#event-page .loop .body .header {
+	background: #FFF;
+	border: none;
+	padding: none;
+}
+
+
+/* Locations */
+#event-page .locations.loop .header {
+}
+#event-page .loop .body .location .header {
+	padding: 0;
+	color: #000;
+}
+#event-page .loop .body .location {
+	@include border-radius(4px);
+	border: 1px solid rgb(200, 200, 200);
+	padding: 15px;
+	float: left;
+	width: 200px;
+	margin-right: 10px;
+	margin-top: 10px;
+	height: 150px;
+	@include box-shadow(2px 2px 2px rgba(0, 0, 0, 0.10));
+}
+
+/* Timeline */
+#event-page .timeline_item .time {
+	width: 100px;
+}
+
+/* Uploads */
+#event-page .upload {
+	padding-left: 25px;
+}
+
+.event {
+	width: auto;
+	padding-right: 60px;
+}
+.event .name {
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
 }

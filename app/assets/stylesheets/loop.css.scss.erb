@@ -1,0 +1,98 @@
+@import '_colors';
+@import '_mixins';
+@import '_fonts';
+
+.loop {
+	width: 400px;
+	margin: 50px auto 0;
+}
+.loop .header {
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	font-weight: 400;
+	@include lightUiGradient;
+	border: 1px solid rgb(220, 220, 220);
+	padding: 0 15px;
+}
+.loop .header .heading {
+	float: left;
+}
+.loop .header .new-button {
+	float: right;
+	height: 30px;
+	line-height: 30px;
+	background: $bs-blue; 
+	color: #FFF;
+	position: relative;
+	top: 10px;
+	padding: 0 15px;
+	font-size: 13px;
+	@include border-radius(4px);
+}
+.loop .header .new-button:hover {
+	background: $bs-blue-dark;
+}
+.loop .body {
+	border: 1px solid rgb(200, 200, 200);
+	border-top: none;
+}
+.loop .body .no-results {
+	font-size: 12px;
+	color: rgb(150, 150, 150);
+	display: block;
+	text-align: center;
+	padding: 25px;
+}
+
+.loop .body .record {
+	position: relative;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid rgb(230, 230, 230);
+	padding-left: 50px;
+}
+.loop .body .record:last-child {
+	border: none;
+}
+.loop .body .record .link {
+	display: block;
+	color: $bs-blue;
+}
+.loop .body .record .link:hover {
+	text-decoration: underline;
+	color: $bs-blue-dark;
+}
+.loop .body .record .arrow {
+	display: block;
+	position: absolute;
+	font-weight: 300;
+	font-size: 30px;
+	height: 50px;
+	line-height: 50px;
+	top: 0;
+	right: 25px;
+	color: rgb(200, 200, 200);	
+}
+.loop .body .record:hover .arrow {
+	color: $bs-blue-dark;
+}
+.loop .body .edit-link {
+	position: absolute;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: url(<%= asset_path 'edit-icon-gray.png' %>) no-repeat;
+	top: 8px;
+	left: 10px;
+}
+.loop .edit-link:hover {
+	background: url(<%= asset_path 'edit-icon-blue.png' %>) no-repeat;
+}
+
+@media screen and (max-width: 625px) {
+	.loop {
+		width: 90%;
+		margin-top: 10px;
+	}
+}

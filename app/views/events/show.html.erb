@@ -1,69 +1,111 @@
-<h1>
-	Event: <%= @event.name %>
-</h1>
-
-<div id='locations'>
+<div id='event-page'>
 	
-	<% if @locations.exists? %>
-	
-		<% @locations.each do |location| %>
-		
-			<%= render 'locations/single', location: location %>
-		
-		<% end %>
-	
-	<% else %>
-	  
-		<span class='no-results'>No locations have been added to this event</span>
-	
+	<% if current_user %>	
+		<div class='share'>
+			<div class='header'>
+				Event URL (share this link with vendors)
+			</div>
+			<div class='url'>
+				<%= text_field_tag nil, event_url(@event), class: 'text-input', readonly: true %>
+			</div>
+		</div>
 	<% end %>
 	
-</div>
-
-<div id='timelines'>
+	<div class='event-information'>
+		<h1 class='name'><%= @event.name %></h1>
+		<p class='date'><%= @event.starting_date.strftime("%b %e, %Y")%></p>
+	</div>
 	
-	<% if @timelines.exists? %>
+	<% if @event.notes.exists? %>
+		<div class='note'>
+			<%= @event.notes %>
+		</div>
+	<% elsif current_user %>
+		<div class='note'>
+			You have not added any notes to this event. <%= link_to 'Add a note to this event here', new_note_path, class: 'link' %>
+		</div>
+	<% end %>
+	  
 	
-		<% @timelines.each do |timeline| %>
+	
+	<div class='locations loop'>
 		
-			<% if timeline.timeline_items.exists? %>
+		<div class='header'>
+			Locations for this event
+		</div>
+		
+		<div class='body'>
 			
-				<% timeline.timeline_items.each do |timeline_item| %>
-					
+			<% if @locations.exists? %>
+			
+				<% @locations.each do |location| %>
+				
+					<%= render 'locations/single', location: location %>
+				
+				<% end %>
+			
+			<% else %>
+			
+			  <span class='no-results'>No locations have been added to this event</span>
+			
+			<% end %>
+			
+			<div class='clear'></div>
+			
+		</div>
+		
+	</div>
+	
+	<div class='timelines loop'>
+		
+		<div class='header'>
+			Event Timeline
+		</div>
+		
+		<div class='body'>
+			
+			<% if @timeline.timeline_items.exists? %>
+			
+				<% @timeline.timeline_items.each do |timeline_item| %>
+				
 					<%= render 'timeline_items/single', timeline_item: timeline_item %>
 				
 				<% end %>
-				
+			
 			<% else %>
 			  
-				<span class='no-results'>No events have been added to this timeline</span>
+				<span class='no-results'>No events have been added to the timeline</span>
 			
 			<% end %>
+			
+		</div>
+			
+	</div>
+	
+	<div class='uploads loop'>
 		
-		<% end %>
-	
-	<% else %>
-	  
-		<span class='no-results'>No timelines have been added to this event</span>
-	
-	<% end %>
-	
-</div>
-
-<div id='uploads'>
-	
-	<% if @uploads.exists? %>
-	
-		<% @uploads.each do |upload| %>
+		<div class='header'>
+			Files for this event
+		</div>
+			
+		<div class='body'>
+			
+			<% if @uploads.exists? %>
+			
+				<% @uploads.each do |upload| %>
+				
+					<%= render 'uploads/single', upload: upload %>
+				
+				<% end %>
+			
+			<% else %>
+			
+				<span class='no-results'>No files have been uploaded to this event</span>
+			  
+			<% end %>
+			
+		</div>
 		
-			<%= render 'uploads/single', upload: upload %>
-		
-		<% end %>
-	
-	<% else %>
-	  
-		<span class='no-results'>No files have been uploaded to this event</span>
-	
-	<% end %>
+	</div>
 	
 </div>

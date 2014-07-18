@@ -2,10 +2,10 @@
 
 	<div class='field line1'>
 		<div class='label-container'>
-			<%= ff.label :line1, class: 'label'%>
+			<%= ff.label :line1, class: 'label' %>
 		</div>
 		<div class='text-input-container'>
-			<%= ff.text_field :line1, class: 'text-input-container' %>
+			<%= ff.text_field :line1, class: 'text-input', placeholder: '555 N. Main St.' %>
 		</div>
 		<div class='clear'></div>
 		<span class='error-placeholder'></span>
@@ -16,7 +16,7 @@
 			<%= ff.label :line2, class: 'label'%>
 		</div>
 		<div class='text-input-container'>
-			<%= ff.text_field :line2, class: 'text-input-container' %>
+			<%= ff.text_field :line2, class: 'text-input', placeholder: '(optional)' %>
 		</div>
 		<div class='clear'></div>
 		<span class='error-placeholder'></span>
@@ -27,7 +27,7 @@
 			<%= ff.label :city, class: 'label'%>
 		</div>
 		<div class='text-input-container'>
-			<%= ff.text_field :city, class: 'text-input-container' %>
+			<%= ff.text_field :city, class: 'text-input', placeholder: 'Anytown' %>
 		</div>
 		<div class='clear'></div>
 		<span class='error-placeholder'></span>
@@ -38,7 +38,11 @@
 			<%= ff.label :state, class: 'label'%>
 		</div>
 		<div class='text-input-container'>
-			<%= ff.select :state, options_for_select(state_names_and_abbreviations) %>
+			<div class='select-cover'>
+				<span class='value'></span>
+				<%= ff.select :state, options_for_select(state_names_and_abbreviations), {}, class: 'hidden-select' %>
+				<i class='arrow'>▾</i>
+			</div>
 		</div>
 		<div class='clear'></div>
 		<span class='error-placeholder'></span>
@@ -49,7 +53,7 @@
 			<%= ff.label :zip, class: 'label'%>
 		</div>
 		<div class='text-input-container'>
-			<%= ff.text_field :zip, class: 'text-input-container' %>
+			<%= ff.text_field :zip, class: 'text-input', placeholder: '12345' %>
 		</div>
 		<div class='clear'></div>
 		<span class='error-placeholder'></span>

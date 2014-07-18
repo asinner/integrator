@@ -1,19 +1,23 @@
-<%= link_to 'New location', new_event_location_path(@event) %>
+<div class='locations loop'>
+	
+	<div class='header'>
+		<h2 class='heading'>Locations</h2>
+		<%= link_to 'New location »', new_event_location_path(@event), class: 'new-link' %>
+	</div>
+	
+	<div class='body'>
+		<% if @locations.exists? %>
 
-<div class='locations'>
-	
-	<% if @locations.exists? %>
-	
-		<% @locations.each do |location| %>
-		
-			<%= render 'locations/single', location: location %>
-		
+			<% @locations.each do |location| %>
+
+				<%= render 'locations/single', location: location %>
+
+			<% end %>
+
+		<% else %>
+
+			<span class='no-results'>No locations here</span>
+
 		<% end %>
-	
-	<% else %>
-	  
-		<span class='no-results'>No locations here</span>
-	
-	<% end %>
-	
+	</div>	
 </div>

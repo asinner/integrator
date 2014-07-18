@@ -1,24 +1,38 @@
 <% vendor = @vendor if @vendor %>
 
-<div class='vendor' id='vendor_<%= %>'>
+<div class='vendor' id='vendor_<%= vendor.id %>'>
 	
-	<div class='name'>
-		<%= vendor.name %>
+	<div class='header'>
+		<%= link_to '', edit_event_vendor_path(@event, vendor), class: 'edit-link' %>
+		<div class='name'>
+			<%= vendor.name %>
+		</div>
+		<div class='category'>
+			<%= vendor.category %>
+		</div>
+		
 	</div>
 	
-	<div class='category'>
-		<%= vendor.category %>
-	</div>
-	
-	
-	<% if vendor.contacts.exists? %>
-	
-		<% vendor.contacts.each do |contact| %>
+	<div class='body'>
 		
-			<%= render 'vendors/single_contact', contact: contact %>
+		<%= link_to 'Add contact to vendor »', new_event_contact_path(@event, params: { vendor_id: vendor.id }), class: 'add-link' %>
+
+		<div class='contacts'>
+			<% if vendor.contacts.any? %>
+
+				<% vendor.contacts.each do |contact| %>
+
+					<%= render 'contacts/single', contact: contact %>
+
+				<% end %>
+
+			<% else %>
+
+				No contacts
+
+			<% end %>
+		</div>
 		
-		<% end %>
-	
-	<% end %>
-	
+		
+	</div>	
 </div>

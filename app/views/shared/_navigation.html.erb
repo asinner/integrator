@@ -5,7 +5,7 @@
 			<ul>
 				<li><%= link_to 'Events', events_path %></li>
 				<li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
-				<li>Signed in as <%= current_user.first_name %></li>
+				<li class='user-info'>Signed in as <%= current_user.first_name %></li>
 			</ul>
 		</div>
 	<% else %>

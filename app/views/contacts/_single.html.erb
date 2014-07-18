@@ -1,9 +1,20 @@
 <% contact = @contact if @contact %>
 
-<div class='contact record' id='contact_<%= contact.id %>'>
+<div class='contact' data-toggle-parent='parent' data-toggle-target='.info' id='contact_<%= contact.id %>'>
+	<%= link_to '', edit_event_contact_path(@event, contact), class: 'edit-link' %>
 	
-	<div class='information'>
-		<span class='name'> <%= "#{contact.fullname}" %><span class='name'><%= contact.vendor.name if contact.vendor %></span>
-		
+	<div class='name togglable'>
+		<%= contact.fullname %>
+	</div>
+	<div class='info'>
+		<div class='position'>
+			<%= contact.position %>
+		</div>
+		<div class='email'>
+			<%= contact.email %>
+		</div>
+		<div class='phone'>
+			<%= contact.phone_number %>
+		</div>
 	</div>
 </div>

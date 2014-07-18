@@ -1,0 +1,76 @@
+<%= form_for @contact, url: event_contact_path(@event, @contact), method: :patch, authenticity_token: true, remote: true do |f| %>
+	
+	<div class='form-wrap'>
+	
+		<div class='header'>
+			Edit contact
+			<i class='close'>✖</i>			
+		</div>
+		
+		<div class='body'>
+			<div class='field first_name'>
+				<div class='label-container'>
+					<%= f.label :first_name, class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :first_name, class: 'text-input', placeholder: 'John' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+
+			<div class='field last_name'>
+				<div class='label-container'>
+					<%= f.label :last_name, class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :last_name, class: 'text-input', placeholder: 'Doe' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+
+			<div class='field position'>
+				<div class='label-container'>
+					<%= f.label :position, class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :position, class: 'text-input', placeholder: 'Mother of the bride' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+
+			<div class='field email'>
+				<div class='label-container'>
+					<%= f.label :email, class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :email, class: 'text-input', placeholder: 'mom@example.com' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+
+			<div class='field phone_number'>
+				<div class='label-container'>
+					<%= f.label :phone_number, class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :phone_number, class: 'text-input', placeholder: '(555) 123-4567' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>			
+		</div>
+		
+		<div class='footer'>
+			<%= f.submit 'Update', class: 'submit button button-h-40 blue-button' %>
+			
+			<%= f.button 'Cancel', type: 'button', class: 'button cancel-button button-h-40' %>
+			
+		</div>
+				
+	</div>
+	
+<% end %>

@@ -88,6 +88,35 @@ class UploadsController < ApplicationController
     end
   end
   
+  def edit
+    @upload = Upload.find(params[:id])
+    @event = @upload.event
+    authorize @event, :find
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  
+  def update
+    @upload = Upload.find(params[:id])
+    @event = @upload.event
+    authorize @event, :find
+    respond_to do |format|
+      if @upload.update_attributes(upload_params)
+        format.html
+        format.js
+      else
+        format.html
+        format.js
+      end
+    end
+  end
+  
+  def upload_params
+    params.require(:upload).permit(:name)
+  end
+  
   def resolve_layout
     case action_name
     when 'index'

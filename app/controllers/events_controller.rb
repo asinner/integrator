@@ -1,10 +1,11 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user, except: :show
+  after_filter :scaffold_resources, only: :create
   
   def show
     @event = Event.find(params[:id])
     
-    @timelines = @event.timelines
+    @timeline = @event.timeline
     @uploads = @event.uploads
     @contacts = @event.contacts
     @locations = @event.locations
@@ -44,6 +45,30 @@ class EventsController < ApplicationController
     end
   end
   
+  def edit
+    @event = Event.find(params[:id])
+    authorize @event, :find
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    authorize @event, :find
+    respond_to do |format|
+      if @event.update_attributes(event_params)
+        format.html
+        format.js
+      else
+        format.html
+        format.js
+      end
+    end
+    
+  end
+  
   def overview
     @event = Event.find(params[:id])
     # Ensure event belongs to current users account
@@ -57,5 +82,9 @@ class EventsController < ApplicationController
   
   def event_params
     params.require(:event).permit(:name, :starting_date)
+  end
+
+  def scaffold_resources
+    @event.create_timeline(name: 'Main Timeline')
   end
 end

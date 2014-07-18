@@ -8,6 +8,8 @@ Integrator::Application.routes.draw do
     resources :users, :events
   end
   
+  resources :notes
+  
   resources :events do 
     member do
       get 'overview'

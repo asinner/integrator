@@ -35,6 +35,31 @@ class TimelinesController < ApplicationController
     end
   end
   
+  def edit
+    @timeline = Timeline.find(params[:id])
+    @event = @timeline.event
+    authorize @event, :find
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  
+  def update
+    @timeline = Timeline.find(params[:id])
+    @event = @timeline.event
+    authorize @event, :find
+    respond_to do |format|
+      if @timeline.update_attributes(timeline_params)
+        format.html
+        format.js
+      else
+        format.html
+        format.js
+      end
+    end
+  end
+  
   def timeline_params
     params.require(:timeline).permit(:name)
   end

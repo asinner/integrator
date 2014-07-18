@@ -1,0 +1,41 @@
+@import '_colors';
+@import '_mixins';
+
+.locations .body {
+	padding: 25px;
+}
+
+#dashboard .location {
+	position: relative;
+	font-size: 14px;
+	color: rgb(150, 150, 150);
+	margin-bottom: 10px;
+	@include box-shadow(2px 2px 2px rgba(0, 0, 0, 0.10));
+}
+#dashboard .location:last-child {
+	border: none;
+}
+#dashboard .location .header {
+	font-size: 14px;
+	font-weight: 600;
+	height: 50px;
+	line-height: 50px;
+	border: none;
+	padding-left: 50px;
+	background: $main-orange;
+	color: #FFF;
+	border: 1px solid $main-orange-dark-accent;
+	@include border-top-radius(4px);
+}
+#dashboard .location .name {
+	font-size: 16px;
+	font-weight: 600;
+	color: rgb(51, 51, 51);
+}
+#dashboard .location .body {
+	padding: 15px 50px;
+	border: 1px solid rgb(230, 230, 230);
+}
+#dashboard .location .edit-link:hover {
+	background: url(<%= asset_path 'edit-icon-gray.png' %>) no-repeat, rgba(255, 255, 255, 0.20);
+}

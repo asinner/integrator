@@ -2,6 +2,8 @@
 
 <div class='contact' id='contact_<%= contact.id %>'>
 	<div class='information'>
+		<%= link_to '', edit_event_contact_path(@event, contact), class: 'edit-link' %>
+		
 		<span class='name info'><%= "#{contact.first_name} #{contact.last_name}" %></span>
 		<span class='title info'><%= contact.position %></span>		
 		<span class='email info'><%= contact.email %></span>

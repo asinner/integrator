@@ -1,0 +1,41 @@
+<%= form_for @vendor, url: event_vendor_path(@event, @vendor), html: { autocomplete: :off }, authenticity_token: true, remote: true do |f| %>
+	
+	<div class='form-wrap'>
+		
+		<div class='header'>
+			Edit vendor
+			<i class='close'>✖</i>
+		</div>
+		
+		<div class='body'>
+			<div class='field name'>
+				<div class='label-container'>
+					<%= f.label :name, 'Vendor name', class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :name, placeholder: 'XYZ Catering Company', class: 'text-input' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+
+			<div class='field category'>
+				<div class='label-container'>
+					<%= f.label :category, 'Vendor category', class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :category, placeholder: 'Catering', class: 'text-input' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+		</div>
+		
+		<div class='footer'>
+			<%= f.submit 'Update', class: 'submit button button-h-40 blue-button' %>
+			<%= f.button 'Cancel', type: 'button', class: 'button cancel-button button-h-40' %>
+		</div>
+		
+	</div>
+	
+<% end %>

@@ -1,5 +1,6 @@
 <% timeline = @timeline if @timeline %>
 
 <div class='timeline record' id='timeline_<%= timeline.id %>'>
+	<%= link_to '', edit_event_timeline_path(@event, timeline), class: 'edit-link' %>
 	<%= link_to timeline.name, timeline_timeline_items_path(timeline), class: 'link' %>
 </div>

@@ -1,0 +1,19 @@
+var form = $("#edit_contact_<%= @contact.id %>");
+
+<% if @contact.errors.any? %>
+
+	<% @contact.errors.each do |input, msg| %>
+		// Find the field div containing the input
+		var field = form.find("<%= ".field.#{input}" %>");
+		// Give the field an error class
+		field.addClass('error');
+		// Put the error message into the placeholder
+		field.find('.error-placeholder').html("<%= msg %>");
+	<% end %>
+	
+<% else %>
+
+	modalBackground();
+	replaceRecord("<%= j render partial: 'contacts/single' %>", $("#contact_<%= @contact.id %>"));
+	
+<% end %>

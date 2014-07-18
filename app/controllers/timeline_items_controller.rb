@@ -42,6 +42,33 @@ class TimelineItemsController < ApplicationController
     end
   end
   
+  def edit
+    @timeline_item = TimelineItem.find(params[:id])
+    @timeline = @timeline_item.timeline
+    @event = @timeline.event
+    authorize @event, :find
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  
+  def update
+    @timeline_item = TimelineItem.find(params[:id])
+    @timeline = @timeline_item.timeline
+    @event = @timeline.event
+    authorize @event, :find
+    respond_to do |format|
+      if @timeline_item.update_attributes(timeline_item_params)
+        format.html
+        format.js
+      else
+        format.html
+        format.js
+      end
+    end
+  end
+  
   def timeline_item_params
     params.require(:timeline_item).permit(:description, :start_time, :end_time, :st_date, :st_hour, :st_min, :st_period, :et_date, :et_hour, :et_min, :et_period)
   end

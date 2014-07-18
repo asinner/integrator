@@ -1,10 +1,9 @@
 class Upload < ActiveRecord::Base
   include ModelHelper
-  
   belongs_to :account
   belongs_to :event
   has_many :notes, as: :notable
-  
+  validates :name, presence: true, length: { maximum: 255 }
   validate :validate_file_size
 
   def self.size_limit

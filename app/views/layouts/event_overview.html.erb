@@ -27,16 +27,18 @@
 
 <div id='page'>
 	
-	<h1>
-	<%= @event.name %>
-	</h1>
-	
-	<%= render 'events/menu' %>
+	<div id='dashboard-container'>
+		<div class='header'>
+			<%= @event.name %>
+		</div>
 
-	<div id='dashboard'>
-		<%= yield %>
+		<%= render 'events/menu' %>
+
+		<div id='dashboard'>
+			<%= yield %>
+		</div>	
 	</div>
-	
+		
 </div>
 
 </body>

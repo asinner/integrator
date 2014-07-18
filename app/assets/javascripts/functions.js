@@ -50,11 +50,21 @@ function modalBackground() {
 	}
 	return bg;
 }
+// Appends the given record to the given container
+function newRecord(record, container) {
+	// First remove the no results
+	$('.no-results').remove();
+	// Append the record to the container
+	$(container).append(record);
+}
+// Replace old record with new record
+function replaceRecord(newRecord, oldRecord) {
+	oldRecord.replaceWith(newRecord);
+}
 
 $.fn.prepareForms = function() {
 	$(this).prepareHiddenSelects();
 }
-
 $.fn.prepareHiddenSelects = function() {
 	// Get all of the hidden selects
 	var inputs = $(this).find('.hidden-select');
@@ -70,20 +80,9 @@ $.fn.prepareHiddenSelects = function() {
 		});
 	});
 }
-
 $.fn.displayHiddenSelectValue = function() {
 	// Displaying the value
 	var val = $(this).find('option:selected').text();
 	$(this).parents('.select-cover').find('.value').html(val);
 }
 
-
-
-
-// Appends the given record to the given container
-function newRecord(record, container) {
-	// First remove the no results
-	$('.no-results').remove();
-	// Append the record to the container
-	$(container).append(record);
-}
