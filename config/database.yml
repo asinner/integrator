@@ -32,8 +32,10 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: integrator_production
+  database: <%= ENV['RDS_DB_NAME'] %>
   pool: 5
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
+  
