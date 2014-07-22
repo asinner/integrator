@@ -1,0 +1,7 @@
+<% note = @note if @note %>
+
+<div class='note' id='note_<%= note.id %>'>
+	<%= link_to 'asdfsdf', edit_event_note_path(@event, @note), class: 'edit-link' %>
+
+	<%= note.message %>
+</div>

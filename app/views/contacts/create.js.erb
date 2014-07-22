@@ -5,12 +5,12 @@ var form = $('#new_contact');
 	<% if params[:vendor_id] %>
 	
 		modalBackground();
-		newRecord("<%= j render partial: 'contacts/single' %>", '#vendor_<%= @vendor.id %> .contacts');
+		newRecord("<%= j render partial: 'contacts/single', locals: { contact: @contact } %>", '#vendor_<%= @vendor.id %> .contacts');
 	
 	<% else %>
 		
 		modalBackground();
-		newRecord("<%= j render partial: 'contacts/single' %>", '.contacts');
+		newRecord("<%= j render partial: 'contacts/single', locals: { contact: @contact } %>", '.contacts');
 	
 	<% end %>
 	

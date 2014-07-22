@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
     @location = Location.new
     @location.build_address
     respond_to do |format|
-      format.html
+      format.html { @locations = @event.locations }
       format.js
     end
   end
@@ -43,7 +43,7 @@ class LocationsController < ApplicationController
     @event = @location.event
     authorize @event, :find
     respond_to do |format|
-      format.html
+      format.html { @locations = @event.locations }
       format.js
     end
   end
@@ -67,6 +67,8 @@ class LocationsController < ApplicationController
     case action_name
     when 'index'
       'event_overview'
+    when 'new', 'edit'
+      'event_overview_modal'
     else
       'application'
     end

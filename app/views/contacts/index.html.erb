@@ -6,7 +6,7 @@
 	</div>
 	
 	<div class='body'>
-		<% if @contacts.exists? %>
+		<% if @contacts.reload.exists? %>
 
 			<% @contacts.each do |contact| %>
 

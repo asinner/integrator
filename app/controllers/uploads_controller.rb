@@ -16,7 +16,7 @@ class UploadsController < ApplicationController
     @event = Event.find(params[:event_id])
     @upload = Upload.new
     respond_to do |format|
-      format.html
+      format.html { @uploads = @event.uploads }
       format.js
     end
   end
@@ -93,7 +93,7 @@ class UploadsController < ApplicationController
     @event = @upload.event
     authorize @event, :find
     respond_to do |format|
-      format.html
+      format.html { @uploads = @event.uploads }
       format.js
     end
   end
@@ -123,6 +123,8 @@ class UploadsController < ApplicationController
       'event_overview'
     when 'create'
       'iframe'
+    when 'new', 'edit'
+      'event_overview_modal'
     else
       'application'
     end

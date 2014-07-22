@@ -50,6 +50,11 @@ function modalBackground() {
 	}
 	return bg;
 }
+function ensureDashboardContainersExist(partial) {
+	if ($('#dashboard').length == 0) {
+		$('#page').view(partial);
+	}
+}
 // Appends the given record to the given container
 function newRecord(record, container) {
 	// First remove the no results
@@ -60,6 +65,14 @@ function newRecord(record, container) {
 // Replace old record with new record
 function replaceRecord(newRecord, oldRecord) {
 	oldRecord.replaceWith(newRecord);
+}
+
+$.fn.view = function(view) {
+	$(this).empty().html(view);
+}
+$.fn.dashboardView = function(view, partial) {
+	ensureDashboardContainersExist(partial);
+	$(this).view(view);
 }
 
 $.fn.prepareForms = function() {

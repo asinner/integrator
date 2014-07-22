@@ -3,7 +3,7 @@ var form = $('#new_timeline_item');
 <% if @timeline_item.persisted? %>
 	
 	modalBackground();
-	newRecord("<%= j render partial: 'timeline_items/single' %>", '.timeline_items .body');
+	newRecord("<%= j render partial: 'timeline_items/single', locals: { timeline_item: @timeline_item } %>", '.timeline_items .body');
 	sortTimelineItems();
 	
 <% else %>

@@ -1,3 +1,25 @@
-// Place all the styles related to the Accounts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#new-account-wrap {
+	width: 960px;
+	margin: 0 auto 0;
+	padding-top: 50px;
+}
+#new-account-wrap .splash {
+	box-sizing: border-box;
+	width: 50%;
+	float: left;
+	padding: 25px;
+}
+#new-account-wrap .splash .header {
+	font-weight: 600;
+	font-size: 24px;
+	margin-top: 100px;
+}
+#new-account-wrap .splash .content {
+	
+}
+#new-account-wrap .sign-up {
+	box-sizing: border-box;
+	width: 50%;
+	float: right;
+	padding: 0 25px;
+}

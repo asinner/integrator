@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
     authorize @event, :find
-    @contacts = @event.contacts
+    @contacts = @event.contacts.order(last_name: :asc)
     respond_to do |format|
       format.html
       format.js
@@ -16,7 +16,7 @@ class ContactsController < ApplicationController
     @event = Event.find(params[:event_id])
     @contact = Contact.new
     respond_to do |format|
-      format.html
+      format.html { @contacts = @event.contacts.order(last_name: :asc) }
       format.js
     end
   end
@@ -48,7 +48,7 @@ class ContactsController < ApplicationController
     @event = @contact.event
     authorize @event, :find
     respond_to do |format|
-      format.html
+      format.html { @contacts = @event.contacts.order(last_name: :asc) }
       format.js
     end
   end
@@ -72,6 +72,8 @@ class ContactsController < ApplicationController
     case action_name
     when 'index'
       'event_overview'
+    when 'new', 'edit'
+      'event_overview_modal'
     else
       'application'
     end

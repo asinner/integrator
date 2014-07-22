@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Integrator</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,600italic,400italic,300italic' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+	<!-- Responsive -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- Gradient support for IE9 -->
+	<!--[if gte IE 9]>
+	  <style type="text/css">
+	    .gradient {
+	       filter: none;
+	    }
+	  </style>
+	<![endif]-->
+</head>
+<body>
+
+<%= render 'shared/navigation' %>
+
+<%= render 'shared/flash' %>
+
+<div id='page'>
+	<%= yield :background %>
+</div>
+
+<div id='modal-background'>
+	<%= yield %>
+</div>
+
+</body>
+</html>

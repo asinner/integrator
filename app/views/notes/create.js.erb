@@ -1,15 +1,21 @@
-var form = $('#new_event');
+var form = $('#new_note');
+form.finished();
 
-<% if @event.persisted? %>
-	
+<% if @note.persisted? %>
+
 	modalBackground();
-	newRecord("<%= j render partial: 'events/single', locals: { event: @event } %>", '.events .body');
+	
+	<% if @notable.class.name.downcase == "event" %>
+		
+		$('#event-page .note').replaceWith("<%= j render partial: 'notes/single' %>");
+	
+	<% end %>
 	
 <% else %>
-
-	// Loop through the users errors
-	<% if @event.errors.any? %>
-		<% @event.errors.each do |input, msg| %>
+	
+	// Loop through the address errors
+	<% if @note.errors.any? %>
+		<% @note.errors.each do |input, msg| %>
 			// Find the field div containing the input
 			var field = form.find("<%= ".field.#{input}" %>");
 			// Give the field an error class

@@ -12,17 +12,24 @@
 	<% end %>
 	
 	<div class='event-information'>
+		<% if current_user %>
+			<%= link_to "« Go back to #{@event.name}", overview_event_path(@event), class: 'go-back-link' %>
+		<% end %>
 		<h1 class='name'><%= @event.name %></h1>
 		<p class='date'><%= @event.starting_date.strftime("%b %e, %Y")%></p>
 	</div>
 	
 	<% if @event.notes.exists? %>
-		<div class='note'>
-			<%= @event.notes %>
-		</div>
+		
+		<% @event.notes.each do |note| %>
+		
+			<%= render 'notes/single', note: note %>
+		
+		<% end %>
+	
 	<% elsif current_user %>
 		<div class='note'>
-			You have not added any notes to this event. <%= link_to 'Add a note to this event here', new_note_path, class: 'link' %>
+			You have not added any notes to this event. <%= link_to 'Add a note to this event here', new_event_note_path(@event), class: 'link' %>
 		</div>
 	<% end %>
 	  
@@ -80,6 +87,28 @@
 			
 		</div>
 			
+	</div>
+	
+	<div class='contacts loop'>
+		<div class='header'>
+			Contacts
+		</div>
+		
+		<div class='body'>
+			<% if @contacts.exists? %>
+			
+				<% @contacts.each do |contact| %>
+				
+					<%= render 'contacts/single', contact: contact %>
+				
+				<% end %>
+			
+			<% else %>
+			
+			  <span class='no-results'>No contacts have been added to this event</span>
+			
+			<% end %>
+		</div>
 	</div>
 	
 	<div class='uploads loop'>

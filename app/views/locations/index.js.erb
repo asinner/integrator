@@ -1,3 +1,3 @@
 var view = $("<%= j render file: 'locations/index.html.erb' %>");
 var target = $('#dashboard');
-target.empty().html(view);
+target.dashboardView(view, "<%= j render file: 'events/overview.html.erb' %>");

@@ -1,0 +1,32 @@
+<%= form_for [@notable, @note], authenticity_token: true, remote: true do |f| %>
+
+	<div class='form-wrap'>
+		<div class='header'>
+			New note
+			<i class='close'>✖</i>
+		</div>
+
+		<div class='body'>
+			<div class='field message'>
+				<div class='label-container'>
+					<%= f.label :message, class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_area :message, class: 'text-area' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+		</div>
+
+		<div class='footer'>
+			<%= f.submit 'Add note', class: 'submit button button-h-40 blue-button' %>
+			
+			<%= f.button 'Cancel', type: 'button', class: 'button cancel-button button-h-40' %>
+		</div>
+		
+		
+	</div>
+
+	
+<% end %>

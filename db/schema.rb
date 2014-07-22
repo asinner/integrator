@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716013035) do
+ActiveRecord::Schema.define(version: 20140718095715) do
 
   create_table "accounts", force: true do |t|
     t.datetime "created_at"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20140716013035) do
   create_table "notes", force: true do |t|
     t.string   "notable_type"
     t.integer  "notable_id"
-    t.text     "body"
+    t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

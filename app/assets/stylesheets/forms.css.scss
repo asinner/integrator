@@ -85,7 +85,6 @@ input[type='submit'] {
 	text-align: center;
 }
 
-/* Modal */
 .form-wrap {
 	width: 400px;
 	background: #FFF;
@@ -121,6 +120,19 @@ input[type='submit'] {
 .form-wrap .body {
 	padding: 0 25px;
 	padding-bottom: 10px;
+}
+.form-wrap .text-area {
+	font-family: $open-sans;
+	font-size: 14px;
+	box-sizing: border-box;
+	width: 100%;
+	resize: none;
+	height: 100px;
+	outline: none;
+	@include border-radius(4px);
+	border: 1px solid #CCC;
+	@include box-shadow(inset 0px 1px 3px #DDD);
+	padding: 10px;
 }
 .form-wrap .footer {
 	position: relative;

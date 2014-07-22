@@ -7,7 +7,7 @@
 	</div>
 	
 	<div class='body'>
-		<% if @timeline_items.exists? %>
+		<% if @timeline_items.reload.exists? %>
 
 			<% @timeline_items.each do |timeline_item| %>
 

@@ -18,10 +18,9 @@ class TimelineItemsController < ApplicationController
     @event = @timeline.event
     authorize @event, :find
     @timeline_item = TimelineItem.new
-    @contacts = @event.contacts
     
     respond_to do |format|
-      format.html
+      format.html { @timeline_items = @timeline.timeline_items.order(start_time: :asc) }
       format.js
     end
   end
@@ -47,8 +46,9 @@ class TimelineItemsController < ApplicationController
     @timeline = @timeline_item.timeline
     @event = @timeline.event
     authorize @event, :find
+    
     respond_to do |format|
-      format.html
+      format.html { @timeline_items = @timeline.timeline_items.order(start_time: :asc) }
       format.js
     end
   end
@@ -77,6 +77,8 @@ class TimelineItemsController < ApplicationController
     case action_name
     when 'index'
       'event_overview'
+    when 'new', 'edit'
+      'event_overview_modal'
     else
       'application'
     end

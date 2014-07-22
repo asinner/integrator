@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user, except: :show
   after_filter :scaffold_resources, only: :create
+  layout :resolve_layout
   
   def show
     @event = Event.find(params[:id])
@@ -27,7 +28,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     respond_to do |format|
-      format.html
+      format.html { @events = current_user.account.events }
       format.js
     end
   end
@@ -49,7 +50,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     authorize @event, :find
     respond_to do |format|
-      format.html
+      format.html { @events = current_user.account.events }
       format.js
     end
   end
@@ -73,7 +74,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     # Ensure event belongs to current users account
     authorize @event, :find
-    
+        
     respond_to do |format|
       format.html
       format.js
@@ -82,6 +83,15 @@ class EventsController < ApplicationController
   
   def event_params
     params.require(:event).permit(:name, :starting_date)
+  end
+
+  def resolve_layout
+    case action_name
+    when 'new', 'edit'
+      'event_index_modal'
+    else
+      'application'
+    end
   end
 
   def scaffold_resources

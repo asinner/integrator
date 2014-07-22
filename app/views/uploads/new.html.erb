@@ -1,1 +1,7 @@
+<% if request.format == :html %>
+	<% content_for :background do %>
+		<%= render file: 'uploads/index.html.erb' %>
+	<% end %>
+<% end %>
+
 <%= render 'uploads/forms/new' %>

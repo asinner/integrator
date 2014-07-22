@@ -1,20 +1,21 @@
-<% contact = @contact if @contact %>
-
-<div class='contact' data-toggle-parent='parent' data-toggle-target='.info' id='contact_<%= contact.id %>'>
+<div class='contact' id='contact_<%= contact.id %>'>
 	<%= link_to '', edit_event_contact_path(@event, contact), class: 'edit-link' %>
 	
-	<div class='name togglable'>
+	<div class='container name'>
 		<%= contact.fullname %>
 	</div>
-	<div class='info'>
-		<div class='position'>
-			<%= contact.position %>
-		</div>
-		<div class='email'>
-			<%= contact.email %>
-		</div>
-		<div class='phone'>
-			<%= contact.phone_number %>
-		</div>
+	<div class='container phone'>
+		<%= contact.phone_number.presence || "-" %>
 	</div>
+	<div class='container email'>
+		<%= contact.email.presence || "-" %>
+	</div>
+	<div class='container position'>
+		<%= contact.position.presence || "-" %>
+	</div>
+	
+	<div class='container vendor-name'>
+		<%= contact.vendor.name if contact.vendor %>
+	</div>
+	
 </div>

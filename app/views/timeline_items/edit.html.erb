@@ -1,1 +1,7 @@
+<% if request.format == :html %>
+	<% content_for :background do %>
+		<%= render file: 'timeline_items/index.html.erb' %>
+	<% end %>
+<% end %>
+
 <%= render 'timeline_items/forms/edit' %>

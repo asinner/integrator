@@ -1,2 +1,7 @@
-<%= render 'contacts/forms/new' %>
+<% if request.format == :html %>
+	<% content_for :background do %>
+		<%= render file: 'contacts/index.html.erb' %>
+	<% end %>
+<% end %>
 
+<%= render 'contacts/forms/new' %>

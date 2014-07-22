@@ -65,11 +65,13 @@
 #dashboard {
 	height: calc(100% - 50px);
 	overflow-y: scroll;
+	background: rgb(245, 245, 245);
 }
 #dashboard .loop {
 	margin: 0;
 	width: auto;
 	padding: 0;
+	background: #FFF;
 }
 #dashboard .loop .header {
 	background: rgb(250, 250, 250);
@@ -129,20 +131,23 @@
 }
 
 #event-page {
-	width: 800px;
+	width: 960px;
 	margin: 0 auto 0;
 	@include border-radius(4px);
 	padding: 25px;
 }
 #event-page .share {
-	background: #FFFDF0;
-	padding: 25px 10px;
-	border: 1px dotted #E8E4C3;
+	border: 1px solid $main-orange-dark-accent;
+	padding: 25px;
 	font-size: 14px;
+	@include orange-gradient;
+	@include border-radius(4px);
+	@include box-shadow(inset 0px 1px 0px rgba(255, 255, 255, 0.20));
 }
 #event-page .share .header {
 	font-weight: 600;
-	color: #000;
+	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+	color: #FFF;
 }
 #event-page .share .url {
 	padding: 5px 0;
@@ -150,6 +155,8 @@
 #event-page .share .text-input {
 	height: 40px;
 	width: 100%;
+	border: 1px solid $main-orange-dark-accent;
+	@include box-shadow(0px 1px 0px rgba(255, 255, 255, 0.50));
 }
 #event-page .event-information {
 	margin-top: 10px;
@@ -198,7 +205,8 @@
 	border: none;
 	border-bottom: 1px solid rgb(240, 240, 240);
 	background: #FFF;
-	color: rgb(100, 100, 100);
+	color: #000;
+	font-weight: 700;
 }
 #event-page .loop .body {
 	margin: 0;
@@ -210,7 +218,14 @@
 	border: none;
 	padding: none;
 }
-
+#event-page .go-back-link {
+	font-size: 14px;
+	color: $bs-blue;
+	padding-bottom: 10px;
+}
+#event-page .go-back-link:hover {
+	color: $bs-blue-dark;
+}
 
 /* Locations */
 #event-page .locations.loop .header {
@@ -239,6 +254,17 @@
 /* Uploads */
 #event-page .upload {
 	padding-left: 25px;
+}
+
+/* Contacts */
+#event-page .contact {
+	padding-left: 0;
+}
+#event-page .contact:last-child {
+	border-bottom: 1px solid rgb(240, 240, 240);
+}
+#event-page .contact .container:last-child {
+	border-right: 1px solid rgb(240, 240, 240);
 }
 
 .event {

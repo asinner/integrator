@@ -16,7 +16,7 @@ class VendorsController < ApplicationController
     @vendor = Vendor.new
     @vendor.contacts.build
     respond_to do |format|
-      format.html
+      format.html { @vendors = @event.vendors.order(name: :asc) }
       format.js
     end
   end
@@ -44,7 +44,7 @@ class VendorsController < ApplicationController
     @event = @vendor.event
     authorize @event, :find
     respond_to do |format|
-      format.html
+      format.html { @vendors = @event.vendors.order(name: :asc) }
       format.js
     end
   end
@@ -72,6 +72,8 @@ class VendorsController < ApplicationController
     case action_name
     when 'index'
       'event_overview'
+    when 'new', 'edit'
+      'event_overview_modal'
     else
       'application'
     end

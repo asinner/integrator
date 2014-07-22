@@ -8,13 +8,11 @@ Integrator::Application.routes.draw do
     resources :users, :events
   end
   
-  resources :notes
-  
   resources :events do 
     member do
       get 'overview'
     end
-    resources :floorplans, :timelines, :uploads, :vendors, :contacts, :locations
+    resources :floorplans, :timelines, :uploads, :vendors, :contacts, :locations, :notes
   end
   
   resources :floorplans do

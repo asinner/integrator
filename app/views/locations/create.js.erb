@@ -3,7 +3,7 @@ var form = $('#new_location');
 <% if @location.persisted? %>
 	
 	modalBackground();
-	newRecord("<%= j render partial: 'locations/single' %>", '.locations > .body');
+	newRecord("<%= j render partial: 'locations/single', locals: { location: @location } %>", '.locations > .body');
 	
 <% else %>
 

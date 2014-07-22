@@ -1,1 +1,7 @@
+<% if request.format == :html %>
+	<% content_for :background do %>
+		<%= render file: 'locations/index.html.erb' %>
+	<% end %>
+<% end %>
+
 <%= render 'locations/forms/edit' %>

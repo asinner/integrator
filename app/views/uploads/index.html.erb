@@ -6,7 +6,7 @@
 	</div>
 	
 	<div class='body'>
-		<% if @uploads.exists? %>
+		<% if @uploads.reload.exists? %>
 
 			<% @uploads.each do |upload| %>
 

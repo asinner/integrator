@@ -6,7 +6,7 @@
 	</div>
 	
 	<div class='body'>
-		<% if @vendors.exists? %>
+		<% if @vendors.reload.exists? %>
 
 			<% @vendors.each do |vendor| %>
 
