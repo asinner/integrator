@@ -1,3 +1,5 @@
+@import '_colors';
+
 #new-account-wrap {
 	width: 960px;
 	margin: 0 auto 0;
@@ -22,4 +24,21 @@
 	width: 50%;
 	float: right;
 	padding: 0 25px;
+}
+
+#welcome-account {
+	width: 900px;
+	margin: 100px auto 0;
+}
+#welcome-account .header {
+	font-weight: 600;
+	font-size: 24px;
+}
+#welcome-account .list {
+	font-size: 14px;
+	list-style: decimal;
+	padding: 10px 25px;
+}
+#welcome-account .link {
+	color: $bs-blue;
 }

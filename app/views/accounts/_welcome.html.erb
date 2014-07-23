@@ -1,5 +1,8 @@
-<h1>Welcome to <%= application_name %>! Get started by following these steps</h1>
-<ul class='numbered-list'>
-	<li>Confirming your email</li>
-	<li><%= link_to 'Sign in', sign_in_path %></li>
-</ul>
+<div id='welcome-account'>
+	<h1 class='header'>Welcome to <%= application_name %>!</h1>
+	<p class='content'>Get started by following these steps</p>
+	<ul class='list'>
+		<li>Confirming your email (simply click on the link sent to your email)</li>
+		<li><%= link_to 'Sign in', sign_in_path, class: 'link' %> using your email and password</li>
+	</ul>
+</div>
