@@ -1,10 +1,11 @@
 var form = $('#new_account');
+form.finished();
 
 <% if @account.persisted? %>
 
 	var view = $("<%= j render partial: 'accounts/welcome' %>");
-	var target = $('body');
-	target.empty().html(view);
+	var target = $('#page');
+	target.view(view);
 	
 <% else %>
 
