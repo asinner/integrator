@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user, except: :show
-  after_filter :scaffold_resources, only: :create
   layout :resolve_layout
   
   def show
@@ -94,7 +93,4 @@ class EventsController < ApplicationController
     end
   end
 
-  def scaffold_resources
-    @event.create_timeline(name: 'Main Timeline')
-  end
 end

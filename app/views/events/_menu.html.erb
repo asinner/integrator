@@ -1,7 +1,7 @@
 <div class='menu'>
 	<ul>
 		<li><%= link_to 'Overview', overview_event_path(@event) %> <i class='arrow'>›</i></li>
-		<li><%= link_to 'Timeline', timeline_timeline_items_path(@event.timeline) %> <i class='arrow'>›</i></li>
+		<li><%= link_to 'Timelines', event_timelines_path(@event) %> <i class='arrow'>›</i></li>
 		<li><%= link_to 'Vendors', event_vendors_path(@event) %> <i class='arrow'>›</i></li>
 		<li><%= link_to 'Files', event_uploads_path(@event) %> <i class='arrow'>›</i></li>
 		<li><%= link_to 'Contacts', event_contacts_path(@event) %> <i class='arrow'>›</i></li>
