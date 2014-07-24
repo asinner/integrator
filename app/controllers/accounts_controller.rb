@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
   
+  before_action :redirect_signed_in_user, only: :new
   after_action :set_user_confirmation_hash, only: :create
   
   def new

@@ -23,4 +23,11 @@ class ApplicationController < ActionController::Base
     redirect_to sign_in_path, flash: { error: 'Please sign in' } unless current_user
   end
   
+  # Redirects a signed in user
+  def redirect_signed_in_user
+    if current_user
+      redirect_to events_path
+    end
+  end
+  
 end

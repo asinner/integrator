@@ -95,7 +95,6 @@ var forms_ready = function() {
 		$(this).processing();
 	});
 	
-	
 	$('body').on('focus', '.date-input', function() {
 		$(this).datepicker({
 			dateFormat: 'yy/mm/dd',

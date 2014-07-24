@@ -14,6 +14,6 @@ var form = $("#edit_contact_<%= @contact.id %>");
 <% else %>
 
 	modalBackground();
-	replaceRecord("<%= j render partial: 'contacts/single' %>", $("#contact_<%= @contact.id %>"));
+	replaceRecord("<%= j render partial: 'contacts/single', locals: { contact: @contact } %>", $("#contact_<%= @contact.id %>"));
 	
 <% end %>

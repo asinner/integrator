@@ -1,7 +1,6 @@
 function clearFlash() {
 	$('div.flash').remove();
 }
-
 function setPreModalUrl(url) {
 	$('html').attr('data-pre-modal', url);
 } 

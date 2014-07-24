@@ -1,5 +1,5 @@
 <div class='upload record' id='upload_<%= upload.id %>'>
-	<%= link_to '', edit_event_upload_path(@event, upload), class: 'edit-link' %>
+	<%= link_to '', edit_event_upload_path(@event, upload), class: 'edit-link modal-link' %>
 	<%= link_to upload.name, s3_url(Upload.s3_bucket, upload.s3_filename), class: 'link' %>
 	<i class='arrow'>›</i>
 </div>

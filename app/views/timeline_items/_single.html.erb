@@ -1,6 +1,6 @@
 <div class='timeline_item' data-start-time='<%= timeline_item.start_time.strftime("%Y/%m/%d %l:%M:00 %p") %>' id='timeline_item_<%= timeline_item.id %>'>
 	
-	<%= link_to '', edit_timeline_timeline_item_path(@timeline, timeline_item), class: 'edit-link' %>
+	<%= link_to '', edit_timeline_timeline_item_path(@timeline, timeline_item), class: 'edit-link modal-link' %>
 
 	<div class='time container'>
 		<%= timeline_friendly(timeline_item.start_time, timeline_item.end_time) %>

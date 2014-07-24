@@ -14,6 +14,6 @@ var form = $("#edit_location_<%= @location.id %>");
 <% else %>
 
 	modalBackground();
-	replaceRecord("<%= j render partial: 'locations/single' %>", $("#location_<%= @location.id %>"));
+	replaceRecord("<%= j render partial: 'locations/single', locals: { location: @location } %>", $("#location_<%= @location.id %>"));
 	
 <% end %>

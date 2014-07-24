@@ -14,6 +14,6 @@ var form = $("#edit_vendor_<%= @vendor.id %>");
 <% else %>
 
 	modalBackground();
-	replaceRecord("<%= j render partial: 'vendors/single' %>", $("#vendor_<%= @vendor.id %>"));
+	replaceRecord("<%= j render partial: 'vendors/single', locals: { vendor: @vendor } %>", $("#vendor_<%= @vendor.id %>"));
 	
 <% end %>

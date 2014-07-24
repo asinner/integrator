@@ -14,6 +14,6 @@ var form = $("#edit_event_<%= @event.id %>");
 <% else %>
 
 	modalBackground();
-	replaceRecord("<%= j render partial: 'events/single' %>", $("#event_<%= @event.id %>"));
+	replaceRecord("<%= j render partial: 'events/single', locals: { event: @event } %>", $("#event_<%= @event.id %>"));
 	
 <% end %>
