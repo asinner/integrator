@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718095715) do
+ActiveRecord::Schema.define(version: 20140724101841) do
 
   create_table "accounts", force: true do |t|
     t.datetime "created_at"
@@ -99,6 +99,15 @@ ActiveRecord::Schema.define(version: 20140718095715) do
   end
 
   add_index "tables", ["floorplan_id"], name: "index_tables_on_floorplan_id", using: :btree
+
+  create_table "timeline_categories", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "description"
+    t.integer  "event_id"
+  end
+
+  add_index "timeline_categories", ["event_id"], name: "index_timeline_categories_on_event_id", using: :btree
 
   create_table "timeline_item_contacts", force: true do |t|
     t.integer  "timeline_item_id"
