@@ -1,22 +1,53 @@
-.timeline_item {
+@import '_colors';
+@import '_mixins';
+
+#dashboard .timeline_item {
+	background: #FFF;
 	position: relative;
+	padding-left: 50px;
+	font-size: 14px;
 	border-bottom: 1px solid rgb(240, 240, 240);
-	font-size: 15px;
 }
-.timeline_item:nth-child(even) {
-	background: rgb(254, 254, 254);
+#dashboard .timeline_item:last-child {
+	border-bottom: none;
 }
-.timeline_item .container {
-	float: left;
-	border-right: 1px solid rgb(250, 250, 250);
-	padding: 15px;
+#dashboard .timeline_item .cc-ref {
+	position: absolute;
+	top: 20px;
+	width: 10px;
+	height: 10px;
+	@include border-radius(5px);
 }
-.timeline_item .time {
+#dashboard .timeline_item .time {
+	position: absolute;
+	font-size: 14px;
 	width: 150px;
+	line-height: 50px;
 	text-align: right;
-	font-weight: 600;
-	font-size: 13px;
+	padding: 0 5px;
 }
-.timeline_item .description {
-	width: 400px;
+#dashboard .timeline_item .note .message {
+	padding: 15px;
+	background: rgb(250, 250, 250);
+	margin-top: 10px;
+	border: 1px solid rgb(230, 230, 230);
+	@include border-radius(4px);
+}
+#dashboard .timeline_item .description {
+	padding: 15px 25px;
+	padding-left: 180px;
+}
+#dashboard .timeline_item .vendor {
+	@include box-shadow(none);
+	border-bottom: none;
+	margin: 0;
+}
+#dashboard .timeline_item .vendor .name {
+	text-align: right;
+	padding-top: 20px;
+	color: $bs-blue;
+	font-size: 12px;
+}
+#dashboard .timeline_item .vendor .label {
+	color: rgb(200, 200, 200);
 }

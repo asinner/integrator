@@ -1,27 +1,35 @@
 class TimelineItem < ActiveRecord::Base
   attr_accessor :st_date, :st_hour, :st_min, :st_period, :et_date, :et_hour, :et_min, :et_period
   
-  belongs_to :timeline
-  has_many :notes, as: :notable
+  # Associations
+  belongs_to :timeline_category
+  belongs_to :vendor
+  has_one :note, as: :notable
   
-  has_many :timeline_item_contacts
-  has_many :contacts, through: :timeline_item_contacts
-  
+  # Validations  
   validates :description, presence: true, length: { maximum: 255 }
   validates_presence_of :st_date, :st_hour, :st_min, :st_period, :et_date, :et_hour, :et_min, :et_period
   validates :st_hour, inclusion: { in: 1..12 }
   validates :st_min, inclusion: { in: 0..59 }
   validates :st_period, inclusion: { in: %w(am pm) }
-  
   validates :et_hour, inclusion: { in: 1..12 }
   validates :et_min, inclusion: { in: 0..59 }
   validates :et_period, inclusion: { in: %w(am pm) }
+  validate :vendor_exists
   
-  
+  # Before validation
   before_validation :change_time_components_to_integers
   before_save :assemble_times
   
-  accepts_nested_attributes_for :timeline_item_contacts
+  # Nestings
+  accepts_nested_attributes_for :note, reject_if: :all_blank
+  
+  # Methods
+  def vendor_exists
+    if vendor_id.present? && !Vendor.exists?(vendor_id)
+      errors.add(:vendor_id, 'does not exist') 
+    end
+  end
   
   def change_time_components_to_integers
     # Changes the hour to int

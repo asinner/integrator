@@ -1,0 +1,10 @@
+<%= f.fields_for :note do |ff| %>
+	<div class='field note message'>
+		<div class='label-container'>
+			<%= ff.label :note, class: 'label' %>
+		</div>
+		<div class='text-area-container'>
+			<%= ff.text_area :message, class: 'text-area', placeholder: '(optional) Add a note...' %>
+		</div>
+	</div>
+<% end %>

@@ -1,60 +1,59 @@
 @import '_colors';
 @import '_mixins';
 
-.vendors.loop .body {
-	padding: 25px;
-}
-
 /* Vendor */
-
-.vendor {
+#dashboard .vendor {
 	position: relative;
-	border-bottom: 2px solid rgb(200, 200, 200);
 	font-size: 14px;
-	@include border-radius(4px);
-	@include box-shadow(2px 2px 2px rgba(0, 0, 0, 0.10));
-	margin-bottom: 15px;
 }
-.vendor .header {
+#dashboard .vendor .cc-ref {
+	width: 10px;
+	height: 10px;
+	@include border-radius(5px);
+	float: left;
+	position: relative;
+	top: 20px;
+}
+#dashboard .vendor .header {
 	border: none;
-	background: $bs-blue !important;
-	border: 1px solid $bs-blue-dark !important;
-	@include border-top-radius(4px);
 	color: #FFF !important;
 	height: auto !important;
-	font-weight: 600 !important;
-}
-.vendor .header .name {
-	display: block;
-	padding-left: 20px;
-}
-.vendor .header .category {
-	display: block;
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: 400;
-	padding: 0 15px;
-	line-height: 20px;
-	position: relative;
-	top: -10px;
-	left: 5px;
+	@include lightUiGradient;
+	padding-left: 50px;
+	color: rgb(51, 51, 51) !important;
+	border-bottom: 1px solid rgb(200, 200, 200);
 }
-.vendor .header .edit-link:hover {
-	background: url(<%= asset_path 'edit-icon-gray.png' %>) no-repeat, rgba(255, 255, 255, 0.20);
+#dashboard .vendor .header .title {
+	float: left;
+	margin-left: 15px;
 }
-.vendor .body {
+#dashboard .vendor .body {
 	padding: 0 !important;
 	border: 1px solid rgb(230, 230, 230) !important;
 	border-top: none !important;
 }
-.vendor .body .add-link {
-	font-size: 12px;
+#dashboard .vendor .add-link {
 	display: block;
-	padding: 15px;
-	padding-left: 45px;
-	color: $bs-blue;
+	float: left;
+	font-size: 12px;
+	height: 30px;
+	line-height: 30px;
+	margin-left: 15px;
+	@include border-radius(4px);
+	padding: 0 10px;
+	position: relative;
+	top: 10px;
+	border: 1px solid rgb(150, 150, 150);
+	@include lightUiGradient;
+	border: 1px solid rgb(190, 190, 190);
+	color: rgb(130, 130, 130);
+	@include box-shadow(0px 1px 0px #FFF);
 }
-.vendor .body .add-link:hover {
-	color: $bs-blue-dark;
+#dashboard .vendor .add-link:hover {
+	color: rgb(100, 100, 100);
+	border: 1px solid rgb(100, 100, 100);
 }
 
 /* Contacts */

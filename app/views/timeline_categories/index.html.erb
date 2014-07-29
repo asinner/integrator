@@ -1,0 +1,24 @@
+<div class='timeline_categories loop'>
+	
+	<div class='header'>
+		<h2 class='heading'><%= @timeline.name %></h2>
+		<%= link_to 'Add timeline category »', new_timeline_timeline_category_path(@timeline), class: 'new-link modal-link' %>
+	</div>
+	
+	<ul class='body sortable'>
+		
+		<% if @timeline_categories.exists? %>
+
+			<% @timeline_categories.each do |timeline_category| %>
+
+				<%= render 'timeline_categories/single', timeline_category: timeline_category %>
+
+			<% end %>
+
+		<% else %>
+
+			<li class='no-results'>No timeline events here</li>
+
+		<% end %>
+	</ul>	
+</div>

@@ -1,5 +1,5 @@
 class AddTimelineRefToTimelineCategories < ActiveRecord::Migration
   def change
-    add_reference :timeline_categories, :event, index: true
+    add_reference :timeline_categories, :timeline, index: true
   end
 end

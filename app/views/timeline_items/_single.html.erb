@@ -1,14 +1,41 @@
 <div class='timeline_item' data-start-time='<%= timeline_item.start_time.strftime("%Y/%m/%d %l:%M:00 %p") %>' id='timeline_item_<%= timeline_item.id %>'>
 	
-	<%= link_to '', edit_timeline_timeline_item_path(@timeline, timeline_item), class: 'edit-link modal-link' %>
+	<%= link_to '', edit_timeline_category_timeline_item_path(timeline_category, timeline_item), class: 'edit-link modal-link' %>
+	
+	<div class='container cc-ref' style='background: <%= timeline_item.vendor.color if timeline_item.vendor %>'></div>
 
-	<div class='time container'>
-		<%= timeline_friendly(timeline_item.start_time, timeline_item.end_time) %>
+	<div class='container time'>
+		<%= "#{timeline_item.start_time.strftime("%l:%M %P")} - #{timeline_item.end_time.strftime("%l:%M %P")}" %>
 	</div>
-	
-	<div class='description container'>
+
+	<div class='container description'>
+		
 		<%= timeline_item.description %>
+		
+		<div class='note'>
+
+			<% if timeline_item.note %>
+				<div class='message'>
+					<%= timeline_item.note.message if timeline_item.note %>
+				</div>
+				<div class='clear'></div>
+			<% end %>
+
+		</div>
+		
+		<div class='vendor'>
+			<% if timeline_item.vendor %>
+				<div class='name'>
+					<span class='label'>Associated vendor: </span><%= timeline_item.vendor.name %>
+				</div>
+				<div class='clear'></div>
+			<% end %>
+		</div>
+		
 	</div>
 	
-	<div class='clear'></div>
+	<div class='clear'>
+		
+	</div>
+	
 </div>

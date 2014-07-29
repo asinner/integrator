@@ -1,10 +1,19 @@
 var form = $('#new_timeline_item');
+form.finished();
 
 <% if @timeline_item.persisted? %>
 	
 	modalBackground();
-	newRecord("<%= j render partial: 'timeline_items/single', locals: { timeline_item: @timeline_item } %>", '.timeline_items .body');
-	sortTimelineItems();
+	
+	var timeline_category = $("#timeline_category_<%= @timeline_category.id %>");	
+	
+	var target = timeline_category.find('.body');
+	
+	newRecord(
+		"<%= j render partial: 'timeline_items/single', locals: { timeline_item: @timeline_item } %>", target
+	);
+	
+	timeline_category.sort_timeline_items();
 	
 <% else %>
 

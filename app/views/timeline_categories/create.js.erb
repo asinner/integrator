@@ -1,0 +1,22 @@
+var form = $('#new_timeline_category');
+form.finished();
+
+<% if @timeline_category.persisted? %>
+	
+	modalBackground();
+	newRecord("<%= j render partial: 'timeline_categories/single', locals: { timeline_category: @timeline_category } %>", '.timeline_categories > .body');
+	
+<% else %>
+
+	// Loop through the location errors
+	<% if @timeline_category.errors.any? %>
+		<% @timeline_category.errors.each do |input, msg| %>
+			// Find the field div containing the input
+			var field = form.find("<%= ".field.#{input}" %>");
+			// Give the field an error class
+			field.addClass('error');
+			// Put the error message into the placeholder
+			field.find('.error-placeholder').html("<%= msg %>");
+		<% end %>
+	<% end %>
+<% end %>

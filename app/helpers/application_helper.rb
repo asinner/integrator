@@ -58,4 +58,11 @@ module ApplicationHelper
     }
   end
   
+  def palette
+    ['#00A0B0', '#CC333F', '#EB6841', '#EDC951', '#379F7A', '#78AE62', '#C75233', '#C78933', '#79B5AC', '#5E2F46', '#1B325F', '#3A89C9', '#F26C4F']
+  end
+  
+  def random_hex_color
+    "#" + SecureRandom.hex(3)
+  end
 end

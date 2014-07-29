@@ -3,7 +3,7 @@
 @import '_fonts';
 
 $inputHeight: 35px;
-$labelWidth: 120px;
+$labelWidth: 100%;
 
 input[type='text'],
 input[type='email'],
@@ -39,6 +39,7 @@ input[type='submit'] {
 	color: rgb(100, 100, 100);
 }
 .field .label-container {
+	box-sizing: border-box;
 	width: $labelWidth;
 	height: $inputHeight;
 	line-height: $inputHeight;

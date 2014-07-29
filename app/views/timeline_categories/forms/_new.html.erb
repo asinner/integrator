@@ -1,0 +1,32 @@
+<%= form_for @timeline_category, url: timeline_timeline_categories_path(@timeline), authenticity_token: true, remote: true do |f| %>
+
+	<div class='form-wrap'>
+		
+		<div class='header'>
+			New timeline category
+			<i class='close'>✖</i>
+		</div>
+		
+		<div class='body'>
+			<div class='field description'>
+				<div class='label-container'>
+					<%= f.label :description, class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :description, class: 'text-input' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'>
+			</div>
+		</div>
+		
+		<div class='footer'>
+			
+			<%= f.submit 'Add category', class: 'submit button button-h-40 blue-button' %>
+			
+			<%= f.button 'Cancel', type: 'button', class: 'cancel-button button button-h-40' %>
+		</div>
+		
+	</div>
+	
+<% end %>

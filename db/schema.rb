@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724101841) do
+ActiveRecord::Schema.define(version: 20140728221602) do
 
   create_table "accounts", force: true do |t|
     t.datetime "created_at"
@@ -104,10 +104,11 @@ ActiveRecord::Schema.define(version: 20140724101841) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
-    t.integer  "event_id"
+    t.integer  "timeline_id"
+    t.integer  "rank"
   end
 
-  add_index "timeline_categories", ["event_id"], name: "index_timeline_categories_on_event_id", using: :btree
+  add_index "timeline_categories", ["timeline_id"], name: "index_timeline_categories_on_timeline_id", using: :btree
 
   create_table "timeline_item_contacts", force: true do |t|
     t.integer  "timeline_item_id"
@@ -120,15 +121,17 @@ ActiveRecord::Schema.define(version: 20140724101841) do
   add_index "timeline_item_contacts", ["timeline_item_id"], name: "index_timeline_item_contacts_on_timeline_item_id", using: :btree
 
   create_table "timeline_items", force: true do |t|
-    t.integer  "timeline_id"
     t.string   "description"
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "timeline_category_id"
+    t.integer  "vendor_id"
   end
 
-  add_index "timeline_items", ["timeline_id"], name: "index_timeline_items_on_timeline_id", using: :btree
+  add_index "timeline_items", ["timeline_category_id"], name: "index_timeline_items_on_timeline_category_id", using: :btree
+  add_index "timeline_items", ["vendor_id"], name: "index_timeline_items_on_vendor_id", using: :btree
 
   create_table "timelines", force: true do |t|
     t.string   "name"
@@ -176,6 +179,7 @@ ActiveRecord::Schema.define(version: 20140724101841) do
     t.datetime "updated_at"
     t.string   "category"
     t.integer  "event_id"
+    t.string   "color"
   end
 
   add_index "vendors", ["account_id"], name: "index_vendors_on_account_id", using: :btree

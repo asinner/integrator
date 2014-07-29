@@ -1,0 +1,3 @@
+var view = $("<%= j render file: 'timeline_categories/index.html.erb' %>");
+var target = $('#dashboard');
+target.dashboardView(view, "<%= j render file: 'events/overview.html.erb' %>");

@@ -1,0 +1,43 @@
+@import '_colors';
+@import '_mixins';
+
+#dashboard .timeline_category {
+}
+#dashboard .timeline_category .header {
+	position: relative;
+	height: 50px;
+	line-height: 50px;
+	border: none;
+	border-bottom: 1px solid rgb(240, 240, 240);
+	background: #FFF;
+	font-size: 14px;
+	font-weight: 600;
+	padding-left: 50px;
+}
+#dashboard .timeline_category .container,
+#dashboard .timeline_category .add-link {
+	float: left;
+}
+#dashboard .timeline_category .body {
+	border: none;
+}
+.timeline_category .add-link {
+	float: left;
+	display: block;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	@include border-radius(4px);
+	margin-left: 10px;
+	position: relative;
+	top: 15px;
+	@include lightUiGradient;
+	border: 1px solid rgb(220, 220, 220);
+	color: rgb(150, 150, 150);
+	text-shadow: 1px 1px 0px rgb(255, 255, 255);
+}
+.timeline_category .add-link:hover {
+	color: rgb(51, 51, 51);
+	border: 1px solid rgb(200, 200, 200);
+}

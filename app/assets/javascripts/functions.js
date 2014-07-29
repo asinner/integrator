@@ -69,10 +69,17 @@ function replaceRecord(newRecord, oldRecord) {
 
 $.fn.view = function(view) {
 	$(this).empty().html(view);
+	$(this).enableDynamicInterface();
 }
 $.fn.dashboardView = function(view, partial) {
 	ensureDashboardContainersExist(partial);
 	$(this).view(view);
+}
+$.fn.enableDynamicInterface = function() {
+	//$(this).enableSortable();
+}
+$.fn.enableSortable = function() {
+	$('.sortable').sortable();
 }
 
 $.fn.prepareForms = function() {

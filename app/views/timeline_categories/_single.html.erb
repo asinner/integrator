@@ -1,0 +1,27 @@
+<li class='timeline_category' id='timeline_category_<%= timeline_category.id %>'>
+
+	<div class='header'>
+		
+		<%= link_to '', edit_timeline_timeline_category_path(@timeline, timeline_category), class: 'edit-link modal-link' %>
+		
+		<div class='container description'>
+			<%= timeline_category.description %>			
+		</div>
+		
+		<%= link_to '+', new_timeline_category_timeline_item_path(timeline_category), class: 'add-link' %>
+		
+	</div>
+
+	<div class='body'>
+		<% if timeline_category.timeline_items.exists? %>
+
+			<% timeline_category.timeline_items.each do |timeline_item| %>
+
+				<%= render 'timeline_items/single', timeline_item: timeline_item, timeline_category: timeline_category %>
+
+			<% end %>
+
+		<% end %>		
+	</div>	
+	
+</li>

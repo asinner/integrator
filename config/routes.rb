@@ -20,6 +20,10 @@ Integrator::Application.routes.draw do
   end
   
   resources :timelines do
+    resources :timeline_categories
+  end
+  
+  resources :timeline_categories do
     resources :timeline_items
   end
   
