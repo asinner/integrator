@@ -1,0 +1,14 @@
+<div class='vendor_log' id='vendor_log_<%= vendor_log.id %>'>
+	
+	<div class='log'>
+		<%= vendor_log.body  %>
+	</div>
+	
+	<div class='timestamp'>
+		<%= vendor_log.created_at.strftime("%Y/%m/%d") %>
+	</div>
+	
+	<%= link_to '✖', vendor_vendor_log_path(@vendor, vendor_log), method: :delete, remote: true, class: 'delete-link' %>
+
+	
+</div>

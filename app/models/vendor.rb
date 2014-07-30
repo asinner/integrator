@@ -6,6 +6,7 @@ class Vendor < ActiveRecord::Base
   belongs_to :event
   has_many :contacts
   has_many :notes, as: :notable
+  has_many :vendor_logs, dependent: :destroy
   
   # Validations
   validates :name, presence: true, length: { maximum: 255 }

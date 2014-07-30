@@ -8,8 +8,7 @@ function modal(view) {
 	// Fade in the the modal
 	container.fadeIn(200, function() {
 		view.show('fade', { direction: 'up' }, 200);
-	});
-
+	});		
 	
 	// Prepare any forms that were in the view
 	view.prepareForms();
@@ -39,7 +38,7 @@ function modalBackground() {
 		
 		$(document).mouseup(function (e)
 		{
-		    var container = $(".form-wrap, .ui-datepicker");
+		    var container = $(".form-wrap, .ui-datepicker, .modal");
 
 		    if (!container.is(e.target) // if the target of the click isn't the container...
 		        && container.has(e.target).length === 0) // ... nor a descendant of the container
@@ -81,7 +80,6 @@ $.fn.enableDynamicInterface = function() {
 $.fn.enableSortable = function() {
 	$('.sortable').sortable();
 }
-
 $.fn.prepareForms = function() {
 	$(this).prepareHiddenSelects();
 }

@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
     authorize @event, :find
-    @contacts = @event.contacts.order(last_name: :asc)
+    @contacts = @event.contacts.where(vendor_id: nil).order(last_name: :asc)
     respond_to do |format|
       format.html
       format.js
@@ -16,7 +16,7 @@ class ContactsController < ApplicationController
     @event = Event.find(params[:event_id])
     @contact = Contact.new
     respond_to do |format|
-      format.html { @contacts = @event.contacts.order(last_name: :asc) }
+      format.html { @contacts = @event.contacts.where(vendor_id: nil).order(last_name: :asc) }
       format.js
     end
   end
@@ -48,7 +48,7 @@ class ContactsController < ApplicationController
     @event = @contact.event
     authorize @event, :find
     respond_to do |format|
-      format.html { @contacts = @event.contacts.order(last_name: :asc) }
+      format.html { @contacts = @event.contacts.where(vendor_id: nil).order(last_name: :asc) }
       format.js
     end
   end

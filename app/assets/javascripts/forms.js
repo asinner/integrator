@@ -80,9 +80,17 @@ $.fn.processing = function(type) {
 $.fn.finished = function() {
 	// Get the type of element this method was called on
 	var type = $(this).getType();
+	
+	// What finished should do for forms
 	if (type == 'form') {
+		
+		// Enable the form again
 		$(this).enable();
+		
+		// Reset all fields
+		$(this)[0].reset();
 	}
+
 	$(this).find('.spinner').remove();
 }
 

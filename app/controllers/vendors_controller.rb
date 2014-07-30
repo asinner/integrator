@@ -4,7 +4,7 @@ class VendorsController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
     authorize @event, :find
-    @vendors = @event.vendors.order(name: :asc)
+    @vendors = @event.vendors.order(category: :asc)
     respond_to do |format|
       format.html
       format.js
@@ -16,7 +16,7 @@ class VendorsController < ApplicationController
     @vendor = Vendor.new
     @vendor.contacts.build
     respond_to do |format|
-      format.html { @vendors = @event.vendors.order(name: :asc) }
+      format.html { @vendors = @event.vendors.order(category: :asc) }
       format.js
     end
   end

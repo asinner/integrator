@@ -1,0 +1,27 @@
+<%= form_for @vendor_log, url: vendor_vendor_logs_path(@vendor), remote: true, authenticity_token: true do |f| %>
+	
+	<div class='form-wrap'>
+		<div class='body'>
+			<div class='field body'>
+				<div class='label-container'>
+					<%= f.label :body, 'Log', class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= f.text_field :body, class: 'text-input' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+			
+		</div>
+		
+		<div class='footer'>
+			<%= f.submit 'Add log', class: 'submit button blue-button button-h-40' %>
+		</div>
+		
+		<div class='clear'>
+			
+		</div>
+	</div>
+	
+<% end %>

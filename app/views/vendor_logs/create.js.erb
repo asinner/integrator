@@ -1,0 +1,22 @@
+var form = $('#new_vendor_log');
+form.finished();
+
+<% if @vendor_log.persisted? %>
+	
+	newRecord("<%= j render partial: 'vendor_logs/single', locals: { vendor_log: @vendor_log } %>", '.vendor_logs > .body');
+	
+<% else %>
+
+	// Loop through the users errors
+	<% if @vendor_log.errors.any? %>
+		<% @vendor_log.errors.each do |input, msg| %>
+			// Find the field div containing the input
+			var field = form.find("<%= ".field.#{input}" %>");
+			// Give the field an error class
+			field.addClass('error');
+			// Put the error message into the placeholder
+			field.find('.error-placeholder').html("<%= msg %>");
+		<% end %>
+	<% end %>
+
+<% end %>

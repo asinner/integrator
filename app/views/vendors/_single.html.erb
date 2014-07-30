@@ -5,6 +5,8 @@
 		<%= link_to '', edit_event_vendor_path(@event, vendor), class: 'edit-link modal-link' %>
 		<span class='title'><%= "#{vendor.category} - #{vendor.name}"%></span>
 		<%= link_to '+ add contact', new_event_contact_path(@event, params: { vendor_id: vendor.id }), class: 'add-link modal-link' %>
+		<%= link_to '', vendor_vendor_logs_path(vendor), class: 'log-link modal-link' %>
+		
 		
 		<div class='clear'></div>
 	</div>

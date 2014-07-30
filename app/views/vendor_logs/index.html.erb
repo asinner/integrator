@@ -1,0 +1,38 @@
+<% if request.format == :html %>
+	<% content_for :background do %>
+		<%= render file: 'vendors/index.html.erb' %>
+	<% end %>
+<% end %>
+
+<div class='vendor_logs loop modal'>
+	
+		<div class='header'>
+			Conversation logs with <%= "#{@vendor.name} - #{@vendor.category}"%>
+			<i class='close'>✖</i>			
+		</div>
+	
+		<div class='body'>
+			
+			<% if @vendor_logs.reload.exists? %>
+
+				<% @vendor_logs.each do |vendor_log| %>
+
+					<%= render 'vendor_logs/single', vendor_log: vendor_log %>
+
+				<% end %>
+
+			<% else %>
+
+				<span class='no-results'>No conversation logs here</span>
+
+			<% end %>
+			
+		</div>
+		
+		<div class='footer'>
+			
+			<%= render 'vendor_logs/forms/new' %>
+			
+		</div>
+		
+</div>

@@ -27,6 +27,10 @@ Integrator::Application.routes.draw do
     resources :timeline_items
   end
   
+  resources :vendors do
+    resources :vendor_logs
+  end
+  
   get 'sign-in' => 'users#sign_in', as: 'sign_in'
   delete 'sign-out' => 'user_sessions#destroy', as: 'sign_out'
   
