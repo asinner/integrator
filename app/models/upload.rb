@@ -1,10 +1,23 @@
 class Upload < ActiveRecord::Base
+  # Includes
   include ModelHelper
+  
+  # Associations
   belongs_to :account
   belongs_to :event
-  has_many :notes, as: :notable
+  has_one :note, as: :notable
+  
+  # Validations
   validates :name, presence: true, length: { maximum: 255 }
   validate :validate_file_size
+  
+  # Nestings
+  accepts_nested_attributes_for :note
+  
+  def destroy_if
+    
+  end
+  
 
   def self.size_limit
     8.megabytes

@@ -1,5 +1,18 @@
-<div class='upload record' id='upload_<%= upload.id %>'>
+<div class='upload' id='upload_<%= upload.id %>'>
+	<!-- Edit -->
 	<%= link_to '', edit_event_upload_path(@event, upload), class: 'edit-link modal-link' %>
+	
 	<%= link_to upload.name, s3_url(Upload.s3_bucket, upload.s3_filename), class: 'link' %>
-	<i class='arrow'>›</i>
+
+	<div class='note'>
+		
+		<% if upload.note %>
+		
+			<div class='message'>
+				<%= upload.note.message %>
+			</div>
+			
+		<% end %>
+		
+	</div>
 </div>

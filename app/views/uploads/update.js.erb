@@ -14,6 +14,6 @@ var form = $("#edit_upload_<%= @upload.id %>");
 <% else %>
 
 	modalBackground();
-	replaceRecord("<%= j render partial: 'uploads/single' %>", $("#upload_<%= @upload.id %>"));
+	replaceRecord("<%= j render partial: 'uploads/single', locals: { upload: @upload } %>", $("#upload_<%= @upload.id %>"));
 	
 <% end %>

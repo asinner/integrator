@@ -29,10 +29,24 @@
 }
 
 .upload {
-	
+	font-size: 14px;
+	position: relative;
+	background: #FFF;
+	padding: 13px;
+	padding-left: 50px;
+	border-bottom: 1px solid rgb(230, 230, 230);
+}
+.upload:last-child {
+	border: none;
 }
 .upload .link {
-	height: 50px;
-	line-height: 50px;
 	color: $main-blue-dark-accent;
 }
+.upload .note .message {
+	font-size: 12px;
+	padding: 10px;
+	border-left: 2px solid rgb(230, 230, 230);
+	margin-top: 10px;
+	color: rgb(150, 150, 150);
+}
+

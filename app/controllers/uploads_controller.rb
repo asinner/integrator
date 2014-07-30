@@ -92,6 +92,7 @@ class UploadsController < ApplicationController
     @upload = Upload.find(params[:id])
     @event = @upload.event
     authorize @event, :find
+    @upload.build_note if @upload.note.nil?
     respond_to do |format|
       format.html { @uploads = @event.uploads }
       format.js
@@ -114,7 +115,7 @@ class UploadsController < ApplicationController
   end
   
   def upload_params
-    params.require(:upload).permit(:name)
+    params.require(:upload).permit(:name, note_attributes: [:message])
   end
   
   def resolve_layout
