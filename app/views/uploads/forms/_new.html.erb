@@ -9,10 +9,23 @@
 		
 		<div class='body'>
 			
+			<div class='note'>
+				<% if params[:floorplan] %>
+
+					Note: Floorplan images must be either .png, .jpeg, or .gif
+
+				<% end %>
+			</div>
+			
 			<%= f.button 'Choose files »', type: 'button', class: 'button clear-button-orange button-h-40 file-input-button' %>
 			
 			<%= f.file_field :file, multiple: true, class: 'hidden-file-input trigger-submission-change' %>
 			
+			<% if params[:floorplan] %>
+			
+				<%= f.hidden_field :floorplan, value: true %>
+			
+			<% end %>
 			
 			<iframe name='upload-submission' id='iframe-upload'></iframe>
 			

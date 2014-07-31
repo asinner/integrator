@@ -4,4 +4,5 @@ class Note < ActiveRecord::Base
   
   # Callbacks
   after_save { |note| note.destroy if note.message.blank? }
+  
 end

@@ -26,6 +26,15 @@ class EventsController < ApplicationController
   
   def new
     @event = Event.new
+    
+    # Build out locations and addresses foreach location
+    2.times { @event.locations.build }
+    @event.locations.each { |location| location.build_address }
+    
+    # Build out vendors and contacts foreach vendor
+    2.times { @event.vendors.build }
+    @event.vendors.each { |vendor| vendor.contacts.build }
+    
     respond_to do |format|
       format.html { @events = current_user.account.events }
       format.js

@@ -50,7 +50,8 @@ class TimelineItemsController < ApplicationController
   
   def edit
     @timeline_item = TimelineItem.find(params[:id])
-    @timeline = @timeline_item.timeline
+    @timeline_category = @timeline_item.timeline_category
+    @timeline = @timeline_category.timeline
     @event = @timeline.event
     authorize @event, :find
     
@@ -62,9 +63,11 @@ class TimelineItemsController < ApplicationController
   
   def update
     @timeline_item = TimelineItem.find(params[:id])
-    @timeline = @timeline_item.timeline
+    @timeline_category = @timeline_item.timeline_category
+    @timeline = @timeline_category.timeline
     @event = @timeline.event
     authorize @event, :find
+
     respond_to do |format|
       if @timeline_item.update_attributes(timeline_item_params)
         format.html

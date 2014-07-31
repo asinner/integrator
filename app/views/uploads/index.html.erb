@@ -1,16 +1,35 @@
 <div class='uploads loop'>
 	
 	<div class='header'>
-		<h2 class='heading'>Files</h2>
-		<%= link_to 'Upload files »', new_event_upload_path(@event), class: 'new-link modal-link' %>
-	</div>
+		<h2 class='heading'><%= params[:floorplan] ? "Floorplans" : "Files" %></h2>
+		
+		<% if params[:floorplan] %>
+		
+			<%= link_to "Upload floorplan images »", new_event_upload_path(@event, params: { floorplan: true }), class: 'new-link modal-link' %>
+		
+		<% else %>
+		  	
+			<%= link_to "Upload files »", new_event_upload_path(@event), class: 'new-link modal-link' %>
+		
+		<% end %>
 	
-	<div class='body'>
+	</div>
+		
+	<div class='body' id="<%= params[:floorplan] ? 'floorplan-stream' : nil  %>">
+		
 		<% if @uploads.reload.exists? %>
 
 			<% @uploads.each do |upload| %>
-
-				<%= render 'uploads/single', upload: upload %>
+					
+				<% if params[:upload] %>
+					
+					<%= render 'uploads/single', upload: upload %>
+					
+				<% else %>
+				
+					<%= render 'uploads/stream_single', upload: upload %>
+				  
+				<% end %>
 
 			<% end %>
 
@@ -20,5 +39,7 @@
 
 		<% end %>
 	</div>
+	
+	
 	
 </div>

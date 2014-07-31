@@ -14,7 +14,6 @@ var form = $("#edit_timeline_item_<%= @timeline_item.id %>");
 <% else %>
 
 	modalBackground();
-	replaceRecord("<%= j render partial: 'timeline_items/single', locals: { timeline_item: @timeline_item } %>", $("#timeline_item_<%= @timeline_item.id %>"));
-	sortTimelineItems();
+	replaceRecord("<%= j render partial: 'timeline_items/single', locals: { timeline_category: @timeline_category, timeline_item: @timeline_item } %>", $("#timeline_item_<%= @timeline_item.id %>"));
 	
 <% end %>

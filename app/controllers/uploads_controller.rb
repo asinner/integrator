@@ -5,7 +5,13 @@ class UploadsController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
     authorize @event, :find
-    @uploads = @event.uploads
+    
+    if params[:floorplan]
+      @uploads = @event.uploads.where(floorplan: true)
+    else
+      @uploads = @event.uploads.where(floorplan: nil)
+    end
+
     respond_to do |format|
       format.html
       format.js
@@ -16,7 +22,13 @@ class UploadsController < ApplicationController
     @event = Event.find(params[:event_id])
     @upload = Upload.new
     respond_to do |format|
-      format.html { @uploads = @event.uploads }
+      format.html do
+        if params[:floorplan]
+          @uploads = @event.uploads.where(floorplan: true)
+        else
+          @uploads = @event.uploads.where(floorplan: nil)
+        end
+      end
       format.js
     end
   end
@@ -42,6 +54,7 @@ class UploadsController < ApplicationController
         # Create a new object
         upload = @event.uploads.new
         upload.account = current_user.account
+        upload.floorplan = true if params[:upload][:floorplan]
         
         # Pass the AR object into an array
         @uploads << upload
@@ -94,7 +107,13 @@ class UploadsController < ApplicationController
     authorize @event, :find
     @upload.build_note if @upload.note.nil?
     respond_to do |format|
-      format.html { @uploads = @event.uploads }
+      format.html do 
+        if params[:floorplan]
+          @uploads = @event.uploads.where(floorplan: true)
+        else
+          @uploads = @event.uploads.where(floorplan: nil)
+        end
+      end
       format.js
     end
   end

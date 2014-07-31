@@ -8,27 +8,44 @@
 		</div>
 		
 		<div class='body'>
-			<div class='field name'>
-				<div class='label-container'>
-					<%= f.label :name, 'Event name', class: 'label' %>
+			
+			<div class='form-section event'>
+				<div class='field name'>
+					<div class='label-container'>
+						<%= f.label :name, 'Event name', class: 'label' %>
+					</div>
+					<div class='text-input-containe'>
+						<%= f.text_field :name, class: 'text-input' %>
+					</div>
+					<div class='clear'></div>
+					<span class='error-placeholder'></span>
 				</div>
-				<div class='text-input-containe'>
-					<%= f.text_field :name, class: 'text-input' %>
-				</div>
-				<div class='clear'></div>
-				<span class='error-placeholder'></span>
+
+				<div class='field starting_date'>
+					<div class='label-container'>
+						<%= f.label :starting_date, 'Date', class: 'label' %>
+					</div>
+					<div class='text-input-containe'>
+						<%= f.text_field :starting_date, class: 'text-input date-input', value: Date.today.strftime("%Y/%m/%d") %>
+					</div>
+					<div class='clear'></div>
+					<span class='error-placeholder'></span>
+				</div>			
+				
 			</div>
 			
-			<div class='field starting_date'>
-				<div class='label-container'>
-					<%= f.label :starting_date, 'Date', class: 'label' %>
-				</div>
-				<div class='text-input-containe'>
-					<%= f.text_field :starting_date, class: 'text-input date-input', value: Date.today.strftime("%Y/%m/%d") %>
-				</div>
-				<div class='clear'></div>
-				<span class='error-placeholder'></span>
-			</div>			
+			<div class='form-section locations'>
+				<%= render 'locations/forms/fields/new', f: f %>
+			</div>
+			
+			<div class='form-section clients'>
+				<!-- Insert clients fields -->
+			</div>
+			
+			<div class='form-section vendors'>
+				<%= render 'vendors/forms/fields/new', f: f %>
+			</div>
+			
 		</div>
 	
 		<div class='footer'>

@@ -10,25 +10,17 @@ class Upload < ActiveRecord::Base
   # Validations
   validates :name, presence: true, length: { maximum: 255 }
   validate :validate_file_size
+  validate :validate_image_only
   
   # Nestings
   accepts_nested_attributes_for :note
-  
-  def destroy_if
-    
-  end
-  
-
+      
   def self.size_limit
     8.megabytes
   end
 
   def self.s3_bucket
     'events_public'
-  end
-
-  def validate_file_size
-    errors[:base] << "File size is too large (must be under #{ActionController::Base.helpers.number_to_human_size(Upload.size_limit)})" if self.size > Upload.size_limit
   end
 
   def assign_attributes_from_file file
@@ -57,5 +49,16 @@ class Upload < ActiveRecord::Base
     obj = bucket.objects["#{self.s3_filename}"]
     obj.write(file: file.path, acl: :public_read)
   end
+  
+  def validate_image_only
+    if floorplan
+      errors[:base] << "Floorplan images must be either png, jpg, or gif" unless ['image/png', 'image/jpeg', 'image/jpg', 'image/gif'].include?(content_type)
+    end
+  end
+  
+  def validate_file_size
+    errors[:base] << "File size is too large (must be under #{ActionController::Base.helpers.number_to_human_size(Upload.size_limit)})" if self.size > Upload.size_limit
+  end
+  
   
 end
