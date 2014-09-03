@@ -1,4 +1,32 @@
+$.fn.blank = function() {
+	
+	if ($.trim($(this).val()) == '') {
+		
+		return true;
+		
+	} else {
+		
+		return false;
+		
+	}
+}
+$.fn.present = function() {
+	
+	// Is the input not blank?
+	if (!$(this).blank()) {
+		
+		// ..then it is present
+		return true;
+		
+	} else {
+		
+		// ..then it is not present
+		return false;
+		
+	}
+}
 function modal(view) {
+	
 	// Create the modal background
 	var container = modalBackground();
 	
@@ -10,9 +38,9 @@ function modal(view) {
 		view.show('fade', { direction: 'up' }, 200);
 	});		
 	
-	// Prepare any forms that were in the view
-	view.prepareForms();
-	
+	// Trigger the loaded event for view and all parents
+	view.trigger('loaded');
+		
 	// Whenever the modal background is removed, push the pre modal url into history
 	$('#modal-background').on('remove', function() {
 		preModalPushState();
@@ -65,7 +93,6 @@ function newRecord(record, container) {
 function replaceRecord(newRecord, oldRecord) {
 	oldRecord.replaceWith(newRecord);
 }
-
 $.fn.view = function(view) {
 	$(this).empty().html(view);
 	$(this).enableDynamicInterface();
@@ -80,27 +107,3 @@ $.fn.enableDynamicInterface = function() {
 $.fn.enableSortable = function() {
 	$('.sortable').sortable();
 }
-$.fn.prepareForms = function() {
-	$(this).prepareHiddenSelects();
-}
-$.fn.prepareHiddenSelects = function() {
-	// Get all of the hidden selects
-	var inputs = $(this).find('.hidden-select');
-	
-	// Put the selecte value into the appropriate container
-	inputs.each(function() {
-				
-		$(this).displayHiddenSelectValue();
-		
-		// Make sure the selected value container gets updated whenever a select changes
-		$(this).on('change', function() {
-			$(this).displayHiddenSelectValue();
-		});
-	});
-}
-$.fn.displayHiddenSelectValue = function() {
-	// Displaying the value
-	var val = $(this).find('option:selected').text();
-	$(this).parents('.select-cover').find('.value').html(val);
-}
-

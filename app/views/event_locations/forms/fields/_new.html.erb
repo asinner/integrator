@@ -1,0 +1,20 @@
+<%= f.fields_for :event_locations do |ff| %>
+	
+	<div id='event_location_<%= ff.options[:child_index] %>' class='event_location validate-if-any-filled-in'>
+		
+		<div class='field purpose'>
+			<div class='label-container'>
+				<%= ff.label :purpose, 'Location purpose', class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= ff.text_field :purpose, class: 'text-input required validate-presence', placeholder: 'ex. ceremony or reception' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
+		</div>
+		
+		<%= render 'locations/forms/fields/new', f: ff %>
+		
+	</div>
+	
+<% end %>

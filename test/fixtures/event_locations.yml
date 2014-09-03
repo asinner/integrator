@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  event_id: 
+  location_id: 
+  purpose: MyString
+
+two:
+  event_id: 
+  location_id: 
+  purpose: MyString

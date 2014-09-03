@@ -1,28 +1,20 @@
-<%= f.fields_for :locations do |ff| %>
+<%= f.fields_for :location do |ff| %>
 
-	<div class='field name'>
-		<div class='label-container'>
-			<%= ff.label :name, 'Location name', class: 'label' %>
+	<div id='location_<%= ff.options[:child_index] %>' class='location'>
+		
+		<div class='field name'>
+			<div class='label-container'>
+				<%= ff.label :name, 'Location name', class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= ff.text_field :name, class: 'text-input get-locations required validate-presence', data: { href: '/locations/search' }, placeholder: "The Grand Hotel" %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
 		</div>
-		<div class='text-input-container'>
-			<%= ff.text_field :name, class: 'text-input', placeholder: "The Grand Hotel" %>
-		</div>
-		<div class='clear'></div>
-		<span class='error-placeholder'></span>
+		
+		<%= render 'addresses/forms/fields/new', f: ff %>
+		
 	</div>
-  
-	<div class='field purpose'>
-		<div class='label-container'>
-			<%= ff.label :purpose, 'Location purpose', class: 'label' %>
-		</div>
-		<div class='text-input-container'>
-			<%= ff.text_field :purpose, placeholder: 'ex. Ceremony or Reception', class: 'text-input'%>
-		</div>
-		<div class='clear'></div>
-		<span class='error-placeholder'></span>
-	</div>
-  
-	<%= render 'addresses/forms/fields/new', f: ff %>
-
 		
 <% end %>

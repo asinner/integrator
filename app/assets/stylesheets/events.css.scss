@@ -15,31 +15,30 @@
 	left: 0;
 	width: 200px;
 	box-sizing: border-box;
-	border-right: 1px solid #000;
+	border-right: 1px solid rgb(40, 40, 40);
 	height: 100%;
 	overflow-y: scroll;
 	background: rgb(51, 51, 51);
-	@include box-shadow(inset -2px 0px 5px rgba(0, 0, 0, 0.50));
 }
 #dashboard-container .menu li {
 	position: relative;
-	border-bottom: 1px solid rgb(41, 41, 41);
+	border-bottom: 1px solid rgb(40, 40, 40);
 }
 #dashboard-container .menu li:hover {
 	background: rgb(61, 61, 61);
 }
 #dashboard-container .menu li:hover .arrow {
-	color: #FFF;
+	color: rgb(255, 255, 255);
 }
 #dashboard-container .menu li:hover a {
-	color: #FFF;
+	color: rgb(255, 255, 255);
 }
 #dashboard-container .menu a {
 	display: block;
 	height: 50px;
 	line-height: 50px;
 	padding-left: 25px;
-	color: rgb(100, 100, 100);
+	color: rgb(120, 120, 120);
 }
 #dashboard-container .menu .arrow {
 	font-size: 24px;
@@ -49,15 +48,16 @@
 	right: 25px;
 	height: 50px;
 	line-height: 50px;
-	color: rgb(100, 100, 100);
+	color: rgb(120, 120, 120);
 }
 #dashboard-container .header {
-	font-size: 18px;
+	font-size: 14px;
 	padding: 0 25px;
-	font-weight: 600;
 	height: 50px;
 	line-height: 50px;
-	font-weight: 300;
+	font-weight: bold;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	border-bottom: 1px solid #000;
 	color: #FFF;
 	background: rgb(51, 51, 51);
@@ -129,6 +129,42 @@
 	color: $main-blue;
 	font-size: 14px;
 }
+
+#new-event {
+	width: 600px;
+}
+#new-event .step-one .field {
+	float: left;
+}
+#new-event .step .field .text-input:focus {
+	border-bottom: 1px solid $bs-blue;
+}
+#new-event .step .field .text-input {
+	border: none;
+	border-bottom: 1px solid rgb(240, 240, 240);
+	@include border-radius(0px);
+}
+#new-event .step-one .name {
+	width: 80%;
+	padding-right: 10px;
+}
+#new-event .step-one .starting_date {
+	width: 20%;
+}
+#new-event .step-two .field {
+	float: left;
+}
+#new-event .step-two .field {
+	width: 25%;
+	padding-right: 10px;
+}
+#new-event .location {
+	box-sizing: border-box;
+	float: left;
+	width: 50%;
+	padding-right: 10px;
+}
+
 
 #event-page {
 	width: 960px;

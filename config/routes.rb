@@ -8,6 +8,8 @@ Integrator::Application.routes.draw do
     resources :users, :events
   end
   
+  get 'locations/search' => 'locations#search'
+  
   resources :events do 
     member do
       get 'overview'

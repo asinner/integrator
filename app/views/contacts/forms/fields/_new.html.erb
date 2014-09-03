@@ -11,7 +11,7 @@
 				<%= ff.label :first_name, 'First name', class: 'label' %>
 			</div>
 			<div class='text-input-container'>
-				<%= ff.text_field :first_name, placeholder: 'John', class: 'text-input' %>
+				<%= ff.text_field :first_name, placeholder: 'John', class: 'text-input required validate-presence' %>
 			</div>
 			<div class='clear'></div>
 			<span class='error-placeholder'></span>
@@ -22,7 +22,7 @@
 				<%= ff.label :last_name, 'Last name', class: 'label' %>
 			</div>
 			<div class='text-input-container'>
-				<%= ff.text_field :last_name, placeholder: 'Doe', class: 'text-input' %>
+				<%= ff.text_field :last_name, placeholder: 'Doe', class: 'text-input required validate-presence' %>
 			</div>
 			<div class='clear'></div>
 			<span class='error-placeholder'></span>

@@ -1,2 +1,8 @@
+// Get the view to display
 var view = $("<%= j render file: 'events/new.html.erb' %>");
-modal(view);
+
+// Open into a modal view
+$('body').modal({
+	view: view,
+	action: 'open'
+});

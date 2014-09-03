@@ -1,22 +1,30 @@
+// Get the form
 var form = $('#new_event');
+
+// Tell JS that the form is done
+form.trigger('done');
 
 <% if @event.persisted? %>
 	
-	modalBackground();
-	newRecord("<%= j render partial: 'events/single', locals: { event: @event } %>", '.events .body');
+	alert('The event persisted?');
 	
 <% else %>
 
-	// Loop through the users errors
+	// Display the errors
 	<% if @event.errors.any? %>
+	
+		// Loop through the event errors
 		<% @event.errors.each do |input, msg| %>
-			// Find the field div containing the input
-			var field = form.find("<%= ".field.#{input}" %>");
-			// Give the field an error class
-			field.addClass('error');
-			// Put the error message into the placeholder
-			field.find('.error-placeholder').html("<%= msg %>");
+		
+			alert("<%= input %>");
+		
 		<% end %>
+		
+		// Loop through the client errors
+		<% if @event.clients && @event.clients.errors.any? %>
+		
+		<% end %>
+	
 	<% end %>
-
+	
 <% end %>

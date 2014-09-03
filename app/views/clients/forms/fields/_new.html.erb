@@ -1,0 +1,29 @@
+<div class='object-by-object'>
+	<%= f.fields_for :clients do |ff| %>
+	
+		<div id='client_<%= ff.options[:child_index] %>' class='validate-if-any-filled-in object'>
+			<div class='field first_name'>
+				<div class='label-container'>
+					<%= ff.label :first_name, class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= ff.text_field :first_name, class: 'text-input validate-presence required' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+
+			<div class='field last_name'>
+				<div class='label-container'>
+					<%= ff.label :last_name, class: 'label' %>
+				</div>
+				<div class='text-input-container'>
+					<%= ff.text_field :last_name, class: 'text-input validate-presence required' %>
+				</div>
+				<div class='clear'></div>
+				<span class='error-placeholder'></span>
+			</div>
+		</div>
+
+	<% end %>
+</div>

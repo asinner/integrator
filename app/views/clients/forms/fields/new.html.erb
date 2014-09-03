@@ -1,0 +1,19 @@
+<%= form_for @event, url: event_path(@event, params: { workflow: true } ), method: :patch, authenticity_token: true, remote: true do |f| %>
+	
+	<div class='form-wrap'>
+		<div class='header'>
+			Clients
+			<i class='close'>✖</i>
+		</div>
+		<div class='body'>
+			<%= render 'clients/forms/fields/new', f: f %>
+			
+			<%= link_to 'Skip this step »', new_event_location_path(@event, params: { workflow: true } ) %>
+		</div>
+		<div class='footer'>
+			<%= f.submit 'Next »', class: 'submit button button-h-40 blue-button' %>
+			<%= f.button 'Cancel', type: 'button', class: 'button button-h-40 cancel-button' %>
+		</div>
+	</div>
+	
+<% end %>

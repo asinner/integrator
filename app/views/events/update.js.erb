@@ -1,19 +1,47 @@
-var form = $("#edit_event_<%= @event.id %>");
+<% if @workflow %>
+	
+	// Enable all forms again
+	$('form').finished();
 
-<% if @event.errors.any? %>
-
-	<% @event.errors.each do |input, msg| %>
-		// Find the field div containing the input
-		var field = form.find("<%= ".field.#{input}" %>");
-		// Give the field an error class
-		field.addClass('error');
-		// Put the error message into the placeholder
-		field.find('.error-placeholder').html("<%= msg %>");
+	// Since there is a workflow, don't close down the form
+	// There may be multiple children objects -- simply check for the child object and its errors	
+		
+	<% if @event.clients %>
+		<% @event.clients.each_with_index do |resource, index| %>			
+			<% if resource.errors.any? %>
+				var parent = $('#client_<%= index %>');
+				<% resource.errors.each do |input, msg| %>
+					// Find the field div containing the input
+					var field = parent.find("<%= ".field.#{input}" %>");
+					// Give the field an error class
+					field.addClass('error');
+					// Put the error message into the placeholder
+					field.find('.error-placeholder').html("<%= msg %>");
+				<% end %>
+			<% end %>
+		<% end %>
 	<% end %>
 	
-<% else %>
 
-	modalBackground();
-	replaceRecord("<%= j render partial: 'events/single', locals: { event: @event } %>", $("#event_<%= @event.id %>"));
+<% else %>
+	var form = $("#edit_event_<%= @event.id %>");
+	<% if @event.errors.any? %>
 	
+		<% @event.errors.each do |input, msg| %>
+			// Find the field div containing the input
+			var field = form.find("<%= ".field.#{input}" %>");
+			// Give the field an error class
+			field.addClass('error');
+			// Put the error message into the placeholder
+			field.find('.error-placeholder').html("<%= msg %>");
+		<% end %>
+		
+	<% else %>
+	
+		modalBackground();
+		replaceRecord("<%= j render partial: 'events/single', locals: { event: @event } %>", $("#event_<%= @event.id %>"));
+		
+	<% end %>
+	
+
 <% end %>

@@ -1,27 +1,29 @@
 <%= f.fields_for :vendors do |ff| %>
-	
-	<div class='field name'>
-		<div class='label-container'>
-			<%= ff.label :name, 'Vendor name', class: 'label' %>
+
+	<div id='vendor_<%= ff.options[:child_index] %>' class='vendor object validate-if-any-filled-in'>
+		<div class='field name'>
+			<div class='label-container'>
+				<%= ff.label :name, 'Vendor name', class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= ff.text_field :name, placeholder: 'XYZ Catering Company', class: 'text-input required validate-presence' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
 		</div>
-		<div class='text-input-container'>
-			<%= ff.text_field :name, placeholder: 'XYZ Catering Company', class: 'text-input' %>
+	  
+		<div class='field category'>
+			<div class='label-container'>
+				<%= ff.label :category, 'Vendor category', class: 'label' %>
+			</div>
+			<div class='text-input-container'>
+				<%= ff.text_field :category, placeholder: 'Catering', class: 'text-input required validate-presence' %>
+			</div>
+			<div class='clear'></div>
+			<span class='error-placeholder'></span>
 		</div>
-		<div class='clear'></div>
-		<span class='error-placeholder'></span>
+	  
+		<%= render 'contacts/forms/fields/new', f: ff %>
 	</div>
-  
-	<div class='field category'>
-		<div class='label-container'>
-			<%= ff.label :category, 'Vendor category', class: 'label' %>
-		</div>
-		<div class='text-input-container'>
-			<%= ff.text_field :category, placeholder: 'Catering', class: 'text-input' %>
-		</div>
-		<div class='clear'></div>
-		<span class='error-placeholder'></span>
-	</div>
-  
-	<%= render 'contacts/forms/fields/new', f: ff %>
-	
+
 <% end %>

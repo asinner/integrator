@@ -1,2 +1,20 @@
-var view = $("<%= j render file: 'locations/new.html.erb' %>");
-modal(view);
+<% if @workflow %>
+	
+	// The call form finished on any forms on the page
+	$('form').finished();
+	
+	// Add the event to the events page
+	newRecord("<%= j render partial: 'events/single', locals: { event: @event } %>", '.events .body');
+	
+	// Get the appropriate view
+	var view = $("<%= j render file: 'locations/forms/fields/new' %>");
+	
+	// Replace the current form with the new form
+	$('#modal-background').html(view);
+
+<% else %>
+
+	var view = $("<%= j render file: 'locations/new.html.erb' %>");
+	modal(view);
+
+<% end %>

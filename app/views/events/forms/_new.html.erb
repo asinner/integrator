@@ -1,58 +1,100 @@
-<%= form_for @event, url: events_path, authenticity_token: true, remote: true do |f| %>
-	
-	<div class='form-wrap'>
-		
-		<div class='header'>
-			New event
-			<i class='close'>✖</i>
-		</div>
-		
-		<div class='body'>
-			
-			<div class='form-section event'>
-				<div class='field name'>
-					<div class='label-container'>
-						<%= f.label :name, 'Event name', class: 'label' %>
-					</div>
-					<div class='text-input-containe'>
-						<%= f.text_field :name, class: 'text-input' %>
-					</div>
-					<div class='clear'></div>
-					<span class='error-placeholder'></span>
-				</div>
+<%= form_for @event, url: events_path, authenticity_token: true, remote: true, html: { autocomplete: :off } do |f| %>
 
-				<div class='field starting_date'>
-					<div class='label-container'>
-						<%= f.label :starting_date, 'Date', class: 'label' %>
-					</div>
-					<div class='text-input-containe'>
-						<%= f.text_field :starting_date, class: 'text-input date-input', value: Date.today.strftime("%Y/%m/%d") %>
-					</div>
-					<div class='clear'></div>
-					<span class='error-placeholder'></span>
-				</div>			
-				
-			</div>
-			
-			<div class='form-section locations'>
-				<%= render 'locations/forms/fields/new', f: f %>
-			</div>
-			
-			<div class='form-section clients'>
-				<!-- Insert clients fields -->
-			</div>
-			
-			<div class='form-section vendors'>
-				<%= render 'vendors/forms/fields/new', f: f %>
-			</div>
-			
+	<!-- Step 1 -->
+	<div class='step step-one'>
+		<span class='header'>Step 1: Event details</span>
+		<div class='field name'>
+			<%= f.label :name, 'Event name', class: 'label' %>
+			<%= f.text_field :name, class: 'text-input', placeholder: "Tim & Kate's Wedding" %>
 		</div>
+		<div class='field starting_date'>
+			<%= f.label :starting_date, 'Event date', class: 'label' %>
+			<%= f.text_field :starting_date, class: 'text-input date-input', value: Date.today.strftime("%Y/%m/%d") %>
+		</div>		
+		<div class='clear'></div>
+	</div>
+
+	<!-- Step 2 -->	
+	<div class='step step-two'>
+		<span class='header'>Step 2: Client information</span>
+		<%= f.fields_for :clients do |ff| %>
+			<div class='field first_name'>
+				<%= ff.label :first_name, class: 'label' %>
+				<%= ff.text_field :first_name, class: 'text-input', placeholder: 'Jane' %>
+			</div>
+			<div class='field last_name'>
+				<%= ff.label :last_name, class: 'label' %>
+				<%= ff.text_field :last_name, class: 'text-input', placeholder: 'Doe' %>
+			</div>
+			<div class='clear'></div>
+		<% end %>
+	</div>
 	
-		<div class='footer'>
-			<%= f.submit 'Create event', class: 'submit button button-h-40 blue-button'%>
-			<%= f.button 'Cancel', type: 'button', class: 'button button-h-40 cancel-button' %>
-		</div>
+	<!-- Step 3 -->
+	<div class='step step-three'>
+		
+		<span class='header'>Step 3: Locations</span>
+		
+		<%= f.fields_for :locations do |ff| %>
+
+			<div class='location'>
+					<!-- Event location -->
+					<%= ff.fields_for :event_locations do |fff| %>
+
+						<div class='field'>
+							<%= fff.label :purpose, class: 'label' %>
+							<%= fff.text_field :purpose, class: 'text-input', placeholder: 'Ceremony' %>
+						</div>
+
+					<% end %>
+
+					<!-- Location -->
+					<div class='field'>
+						<%= ff.label :name, class: 'label' %>
+						<%= ff.text_field :name, class: 'text-input', placeholder: 'The Grand Station' %>
+					</div>
+
+					<!-- Address -->
+					<%= ff.fields_for :address do |fff| %>
+
+						<div class='field'>
+							<%= fff.label :line1, 'Line 1', class: 'label' %>
+							<%= fff.text_field :line1, class: 'text-input', placeholder: '555 Main Ave.' %>
+						</div>
+
+						<div class='field'>
+							<%= fff.label :line2, 'Line 2', class: 'label' %>
+							<%= fff.text_field :line2, class: 'text-input', placeholder: '(optional)' %>
+						</div>
+
+						<div class='field'>
+							<%= fff.label :city, 'City', class: 'label' %>
+							<%= fff.text_field :city, class: 'text-input', placeholder: 'Anytown' %>
+						</div>
+
+						<div class='field'>
+							<%= fff.label :state, 'State', class: 'label' %>				
+							<%= fff.select :state, options_for_select(state_names_and_abbreviations), { prompt: 'Select a state' } %>
+						</div>
+
+						<div class='field'>
+							<%= fff.label :zip, 'Zip', class: 'label' %>
+							<%= fff.text_field :zip, class: 'text-input', placeholder: '10111' %>
+						</div>
+						
+					<% end %>
+
+			</div>
+			
+		<% end %>
+		
+		<div class='clear'></div>
 		
 	</div>
+		
+	<!-- Locations -->
+	
+	
+	<%= f.submit 'Create event', class: 'submit' %>
 	
 <% end %>

@@ -25,8 +25,7 @@ class VendorsController < ApplicationController
     @event = Event.find(params[:event_id])
     authorize @event, :find
     @vendor = @event.vendors.new(vendor_params)
-    @contact = @vendor.contacts.first
-    @contact.event_id = @event.id
+    @event_vendor = @event.event_vendors.new.vendor = @vendor
     
     respond_to do |format|
       if @vendor.save
@@ -61,6 +60,14 @@ class VendorsController < ApplicationController
         format.html
         format.js
       end
+    end
+  end
+  
+  def search
+    @vendors = current_user.account.vendors.where('name like ?', "%#{params[:search]}%")
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
   

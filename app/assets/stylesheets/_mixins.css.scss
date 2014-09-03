@@ -25,6 +25,9 @@
 	-moz-box-shadow:    $options;
 	box-shadow:         $options;	
 }
+
+// $opacity should be formated as a decimal between 0.00 & 1.00
+// $ms should be formatted between 0 - 100
 @mixin opacity($opacity, $ms) {
 	-moz-opacity: $opacity;
 	-khtml-opacity: $opacity;

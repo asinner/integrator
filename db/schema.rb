@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730232202) do
+ActiveRecord::Schema.define(version: 20140807214938) do
 
   create_table "accounts", force: true do |t|
     t.datetime "created_at"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20140730232202) do
     t.datetime "updated_at"
   end
 
+  create_table "clients", force: true do |t|
+    t.integer  "event_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "clients", ["event_id"], name: "index_clients_on_event_id", using: :btree
+
   create_table "contacts", force: true do |t|
     t.integer  "account_id"
     t.integer  "vendor_id"
@@ -46,6 +56,27 @@ ActiveRecord::Schema.define(version: 20140730232202) do
   add_index "contacts", ["account_id"], name: "index_contacts_on_account_id", using: :btree
   add_index "contacts", ["event_id"], name: "index_contacts_on_event_id", using: :btree
   add_index "contacts", ["vendor_id"], name: "index_contacts_on_vendor_id", using: :btree
+
+  create_table "event_locations", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "location_id"
+    t.string   "purpose"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "event_locations", ["event_id"], name: "index_event_locations_on_event_id", using: :btree
+  add_index "event_locations", ["location_id"], name: "index_event_locations_on_location_id", using: :btree
+
+  create_table "event_vendors", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "vendor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "event_vendors", ["event_id"], name: "index_event_vendors_on_event_id", using: :btree
+  add_index "event_vendors", ["vendor_id"], name: "index_event_vendors_on_vendor_id", using: :btree
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -68,13 +99,10 @@ ActiveRecord::Schema.define(version: 20140730232202) do
 
   create_table "locations", force: true do |t|
     t.string   "name"
-    t.string   "purpose"
-    t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "public"
   end
-
-  add_index "locations", ["event_id"], name: "index_locations_on_event_id", using: :btree
 
   create_table "notes", force: true do |t|
     t.string   "notable_type"
@@ -188,11 +216,9 @@ ActiveRecord::Schema.define(version: 20140730232202) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "category"
-    t.integer  "event_id"
     t.string   "color"
   end
 
   add_index "vendors", ["account_id"], name: "index_vendors_on_account_id", using: :btree
-  add_index "vendors", ["event_id"], name: "index_vendors_on_event_id", using: :btree
 
 end

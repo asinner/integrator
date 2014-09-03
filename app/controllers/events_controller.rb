@@ -25,16 +25,16 @@ class EventsController < ApplicationController
   end
   
   def new
+    
+    # Create new a event
     @event = Event.new
     
-    # Build out locations and addresses foreach location
-    2.times { @event.locations.build }
-    @event.locations.each { |location| location.build_address }
+    # Build the clients
+    2.times { @event.clients.build }
     
-    # Build out vendors and contacts foreach vendor
-    2.times { @event.vendors.build }
-    @event.vendors.each { |vendor| vendor.contacts.build }
-    
+    # Build the locations and address
+    2.times { @event.locations.build.build_address }
+        
     respond_to do |format|
       format.html { @events = current_user.account.events }
       format.js
@@ -42,7 +42,11 @@ class EventsController < ApplicationController
   end
   
   def create
+    
+    # Build an event from the current users account and strong parameters
     @event = current_user.account.events.new(event_params)
+        
+    # Format the response
     respond_to do |format|
       if @event.save
         format.html
@@ -51,7 +55,9 @@ class EventsController < ApplicationController
         format.html
         format.js
       end
+      
     end
+  
   end
   
   def edit
@@ -64,8 +70,18 @@ class EventsController < ApplicationController
   end
 
   def update
+    
+    # Find the event
     @event = Event.find(params[:id])
+    
+    # Authorization
     authorize @event, :find
+    
+    if params[:workflow]
+      @workflow = true
+    end
+    
+    # Response
     respond_to do |format|
       if @event.update_attributes(event_params)
         format.html
@@ -90,7 +106,14 @@ class EventsController < ApplicationController
   end
   
   def event_params
-    params.require(:event).permit(:name, :starting_date)
+    params.require(:event).permit(
+    :name, 
+    :starting_date,
+    clients_attributes: [
+        :first_name,
+        :last_name
+      ]
+    )
   end
 
   def resolve_layout

@@ -52,6 +52,7 @@ module ApplicationHelper
       "Vermont"	                    => "VT",
       "Virginia"	                  => "VA",
       "Washington"	                => "WA",
+      "Washington D.C."             => "DC",
       "West Virginia"	              => "WV",
       "Wisconsin"	                  => "WI",
       "Wyoming"	                    => "WY"  

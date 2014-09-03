@@ -1,0 +1,16 @@
+<%= form_for @event, url: event_path(@event), authenticity_token: true, method: :patch, remote: true do |f| %>
+
+	<div class='form-wrap'>
+		<div class='header'>
+			Locations
+		</div>
+		<div class='body'>
+			<%= render 'locations/forms/fields/new', f: f %>
+		</div>
+		<div class='footer'>
+			<%= f.submit 'Next »', class: 'submit button button-h-40 blue-button' %>
+			<%= f.button 'Cancel', type: 'button', class: 'button button-h-40 cancel-button' %>
+		</div>
+	</div>
+	
+<% end %>

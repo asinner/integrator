@@ -3,8 +3,11 @@ class Vendor < ActiveRecord::Base
   
   # Associations
   belongs_to :account
-  belongs_to :event
   has_many :contacts
+  
+  has_many :event_vendors, dependent: :destroy
+  has_many :events, through: :event_vendors
+  
   has_many :notes, as: :notable
   has_many :vendor_logs, dependent: :destroy
   
@@ -16,16 +19,10 @@ class Vendor < ActiveRecord::Base
   # Nestings
   accepts_nested_attributes_for :contacts
   
-  # Hooks
   before_validation :set_color, if: :new_record?
-  
+    
   # Prefers the color pallete found in the application helper before using a random color
   def set_color
-    count = self.event.vendors.count
-    if palette[count].present? 
-      self.color = palette[count]
-    else
-      self.color = random_hex_color
-    end
+    self.color = random_hex_color
   end
 end
